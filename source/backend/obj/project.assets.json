@@ -515,9 +515,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Lukas\\Desktop\\repos\\uni\\forum-project\\source\\backend\\backend.csproj",
-      "projectName": "backend",
-      "projectPath": "C:\\Users\\Lukas\\Desktop\\repos\\uni\\forum-project\\source\\backend\\backend.csproj",
+      "projectUniqueName": "C:\\Users\\Lukas\\Desktop\\repos\\uni\\forum-project\\source\\backend\\Backend.API.csproj",
+      "projectName": "Backend.API",
+      "projectPath": "C:\\Users\\Lukas\\Desktop\\repos\\uni\\forum-project\\source\\backend\\Backend.API.csproj",
       "packagesPath": "C:\\Users\\Lukas\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\Lukas\\Desktop\\repos\\uni\\forum-project\\source\\backend\\obj\\",
       "projectStyle": "PackageReference",

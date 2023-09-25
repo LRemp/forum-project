@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "uBVgTP+LMn0Y76aIenB5obqWqxlqXcXLbCP8Ab7VhwRyAUWeKQYyNUPckyqAc28bGaec2lO95WJMSWX4Mx3UeA==",
+  "dgSpecHash": "p37ixKSr+HvJfGTFQUDTPtQT6eodoLo4E25Ph9fzMvidslt++id8sI/tHfLBEnjzONfU7u6EE6tDnQ0etvvB8A==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Lukas\\Desktop\\repos\\uni\\forum-project\\source\\backend\\backend.csproj",
+  "projectFilePath": "C:\\Users\\Lukas\\Desktop\\repos\\uni\\forum-project\\source\\backend\\Backend.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Lukas\\.nuget\\packages\\dapper\\2.0.151\\dapper.2.0.151.nupkg.sha512",
     "C:\\Users\\Lukas\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
