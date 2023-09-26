@@ -14,6 +14,6 @@ namespace Backend.Core.Contracts
         public Task<Conversation?> GetAsync(int id);
         public Task<List<Conversation>> GetAsync();
         public Task DeleteAsync(int id);
-        public Task UpdateAsync(UpdateConversationDTO updateConversationDTO);
+        public Task UpdateAsync(Conversation conversation);
     }
 }

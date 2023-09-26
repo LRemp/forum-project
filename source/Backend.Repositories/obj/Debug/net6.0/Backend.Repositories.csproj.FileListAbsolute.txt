@@ -1,0 +1,15 @@
+C:\Users\Lukas\Desktop\repos\uni\forum-project\source\Backend.Repositories\bin\Debug\net6.0\Backend.Repositories.deps.json
+C:\Users\Lukas\Desktop\repos\uni\forum-project\source\Backend.Repositories\bin\Debug\net6.0\Backend.Repositories.dll
+C:\Users\Lukas\Desktop\repos\uni\forum-project\source\Backend.Repositories\bin\Debug\net6.0\Backend.Repositories.pdb
+C:\Users\Lukas\Desktop\repos\uni\forum-project\source\Backend.Repositories\bin\Debug\net6.0\Backend.Core.dll
+C:\Users\Lukas\Desktop\repos\uni\forum-project\source\Backend.Repositories\bin\Debug\net6.0\Backend.Core.pdb
+C:\Users\Lukas\Desktop\repos\uni\forum-project\source\Backend.Repositories\obj\Debug\net6.0\Backend.Repositories.csproj.AssemblyReference.cache
+C:\Users\Lukas\Desktop\repos\uni\forum-project\source\Backend.Repositories\obj\Debug\net6.0\Backend.Repositories.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Lukas\Desktop\repos\uni\forum-project\source\Backend.Repositories\obj\Debug\net6.0\Backend.Repositories.AssemblyInfoInputs.cache
+C:\Users\Lukas\Desktop\repos\uni\forum-project\source\Backend.Repositories\obj\Debug\net6.0\Backend.Repositories.AssemblyInfo.cs
+C:\Users\Lukas\Desktop\repos\uni\forum-project\source\Backend.Repositories\obj\Debug\net6.0\Backend.Repositories.csproj.CoreCompileInputs.cache
+C:\Users\Lukas\Desktop\repos\uni\forum-project\source\Backend.Repositories\obj\Debug\net6.0\Backend.Repositories.csproj.CopyComplete
+C:\Users\Lukas\Desktop\repos\uni\forum-project\source\Backend.Repositories\obj\Debug\net6.0\Backend.Repositories.dll
+C:\Users\Lukas\Desktop\repos\uni\forum-project\source\Backend.Repositories\obj\Debug\net6.0\refint\Backend.Repositories.dll
+C:\Users\Lukas\Desktop\repos\uni\forum-project\source\Backend.Repositories\obj\Debug\net6.0\Backend.Repositories.pdb
+C:\Users\Lukas\Desktop\repos\uni\forum-project\source\Backend.Repositories\obj\Debug\net6.0\ref\Backend.Repositories.dll

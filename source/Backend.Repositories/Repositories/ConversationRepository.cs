@@ -53,7 +53,7 @@ namespace Backend.Repositories.Repositories
             return result.ToList();
         }
 
-        public async Task UpdateAsync(UpdateConversationDTO updateConversationDTO)
+        public async Task UpdateAsync(Conversation conversation)
         {
             var query = @"UPDATE conversations
                             SET name = @name, description = @description
@@ -61,9 +61,9 @@ namespace Backend.Repositories.Repositories
 
             await _mysqlConnection.ExecuteAsync(query, new
             {
-                id = updateConversationDTO.Id,
-                name = updateConversationDTO.Name,
-                description = updateConversationDTO.Description
+                id = conversation.Id,
+                name = conversation.Name,
+                description = conversation.Description
             });
         }
     }

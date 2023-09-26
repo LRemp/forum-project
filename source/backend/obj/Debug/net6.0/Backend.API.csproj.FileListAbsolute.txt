@@ -1,0 +1,7 @@
+C:\Users\Lukas\Desktop\repos\uni\forum-project\source\backend\obj\Debug\net6.0\Backend.API.csproj.AssemblyReference.cache
+C:\Users\Lukas\Desktop\repos\uni\forum-project\source\backend\obj\Debug\net6.0\Backend.API.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Lukas\Desktop\repos\uni\forum-project\source\backend\obj\Debug\net6.0\Backend.API.AssemblyInfoInputs.cache
+C:\Users\Lukas\Desktop\repos\uni\forum-project\source\backend\obj\Debug\net6.0\Backend.API.AssemblyInfo.cs
+C:\Users\Lukas\Desktop\repos\uni\forum-project\source\backend\obj\Debug\net6.0\Backend.API.csproj.CoreCompileInputs.cache
+C:\Users\Lukas\Desktop\repos\uni\forum-project\source\backend\obj\Debug\net6.0\Backend.API.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Lukas\Desktop\repos\uni\forum-project\source\backend\obj\Debug\net6.0\Backend.API.MvcApplicationPartsAssemblyInfo.cache

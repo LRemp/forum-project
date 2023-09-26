@@ -9,6 +9,6 @@ namespace Backend.Core.DTOs
     public class CreateMessageDTO
     {
         public string Text { get; set; }
-        public int Channel { get; set; }
+        public int Conversation {  get; set; }
     }
 }

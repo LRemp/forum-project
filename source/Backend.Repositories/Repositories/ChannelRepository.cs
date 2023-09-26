@@ -20,15 +20,15 @@ namespace Backend.Repositories.Repositories
             _mysqlConnection.Open();
         }
 
-        public async Task AddAsync(CreateChannelDTO channelDTO)
+        public async Task AddAsync(Channel channel)
         {
             var query = @"INSERT INTO conversation(name, description)
                             VALUES(@name, @description)";
 
             await _mysqlConnection.QueryAsync(query, new
             {
-                name = channelDTO.Name,
-                description = channelDTO.Description
+                name = channel.Name,
+                description = channel.Description
             });
         }
 
