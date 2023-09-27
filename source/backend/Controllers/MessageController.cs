@@ -43,17 +43,17 @@ namespace Backend.API.Controllers
 
         // POST api/<MessageController>
         [HttpPost]
-        public async Task<IActionResult> Post(MessageDTO messageDTO)
+        public async Task<IActionResult> Post(CreateMessageDTO createMessageDTO)
         {
-            await _messageService.Add(messageDTO, user);
+            await _messageService.Add(createMessageDTO, user);
             return NoContent();
         }
 
         // PUT api/<MessageController>/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> Put(MessageDTO messageDTO, int id)
+        public async Task<IActionResult> Put(CreateMessageDTO createMessageDTO, int id)
         {
-            await _messageService.Update(messageDTO, id, user);
+            await _messageService.Update(createMessageDTO, id, user);
             return NoContent();
         }
 

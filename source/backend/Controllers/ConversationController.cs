@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Backend.Core.Contracts;
+using Backend.Core.DTOs;
+using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -8,37 +10,49 @@ namespace Backend.API.Controllers
     [ApiController]
     public class ConversationController : ControllerBase
     {
-        
+        private readonly IConversationService _conversationService;
+        public ConversationController(IConversationService conversationService)
+        {
+            _conversationService = conversationService;
+        }
         // GET: api/<ConversationController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public async Task<IActionResult> Get()
         {
-            return new string[] { "value1", "value2" };
+            var result = await _conversationService.Get();
+            return Ok(result);
         }
 
         // GET api/<ConversationController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public async Task<IActionResult> Get(int id)
         {
-            return "value";
+            var result = await _conversationService.Get(id);
+            return Ok(result);
         }
 
         // POST api/<ConversationController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public async Task<IActionResult> Post(CreateConversationDTO createConversationDTO, int id)
         {
+            await _conversationService.Add(createConversationDTO, id);
+            return NoContent();
         }
 
         // PUT api/<ConversationController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public async Task<IActionResult> Put(CreateConversationDTO createConversationDTO, int id)
         {
+            await _conversationService.Update(createConversationDTO, id);
+            return NoContent();
         }
 
         // DELETE api/<ConversationController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
+            await _conversationService.Delete(id);
+            return NoContent();
         }
     }
 }

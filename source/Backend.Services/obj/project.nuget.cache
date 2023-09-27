@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "EvITvX4j0oZVBlJITy5NJZZr8o56zA9Br1ZnHwn/ebjHjKiBdIjU6jL23iZJasXkfK/SFCrSrjrlYJ19JmRPEg==",
+  "dgSpecHash": "TZ+FKsXyR9xXdo3Ny4gUaPoC5PBx3U28OS33eJJXRmcLz2E47PpiwZbyTak3i7Zaq4htlQnbEGib18qykYt2Eg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Lukas\\Desktop\\repos\\uni\\forum-project\\source\\Backend.Services\\Backend.Services.csproj",
+  "projectFilePath": "C:\\Users\\Lukas\\Desktop\\repos\\forum-project\\source\\Backend.Services\\Backend.Services.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Lukas\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\Lukas\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",

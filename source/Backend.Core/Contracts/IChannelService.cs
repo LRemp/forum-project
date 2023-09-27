@@ -1,18 +1,13 @@
 ﻿using Backend.Core.DTOs;
-using Backend.Core.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Backend.Core.Contracts
 {
     public interface IChannelService
     {
         public Task Add(ChannelDTO channelDTO);
-        public Task<Channel> Get(int id);
-        public Task<List<Channel> Get();
-        
+        public Task<ChannelDTO> Get(int id);
+        public Task<List<ChannelDTO>> Get();
+        public Task Delete(int id);
+        public Task Update(ChannelDTO channelDTO);
     }
 }

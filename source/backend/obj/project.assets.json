@@ -10428,11 +10428,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Lukas\\Desktop\\repos\\uni\\forum-project\\source\\backend\\Backend.API.csproj",
+      "projectUniqueName": "C:\\Users\\Lukas\\Desktop\\repos\\forum-project\\source\\backend\\Backend.API.csproj",
       "projectName": "Backend.API",
-      "projectPath": "C:\\Users\\Lukas\\Desktop\\repos\\uni\\forum-project\\source\\backend\\Backend.API.csproj",
+      "projectPath": "C:\\Users\\Lukas\\Desktop\\repos\\forum-project\\source\\backend\\Backend.API.csproj",
       "packagesPath": "C:\\Users\\Lukas\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Lukas\\Desktop\\repos\\uni\\forum-project\\source\\backend\\obj\\",
+      "outputPath": "C:\\Users\\Lukas\\Desktop\\repos\\forum-project\\source\\backend\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Lukas\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -10449,11 +10449,11 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\Lukas\\Desktop\\repos\\uni\\forum-project\\source\\Backend.Core\\Backend.Core.csproj": {
-              "projectPath": "C:\\Users\\Lukas\\Desktop\\repos\\uni\\forum-project\\source\\Backend.Core\\Backend.Core.csproj"
+            "C:\\Users\\Lukas\\Desktop\\repos\\forum-project\\source\\Backend.Core\\Backend.Core.csproj": {
+              "projectPath": "C:\\Users\\Lukas\\Desktop\\repos\\forum-project\\source\\Backend.Core\\Backend.Core.csproj"
             },
-            "C:\\Users\\Lukas\\Desktop\\repos\\uni\\forum-project\\source\\Backend.Services\\Backend.Services.csproj": {
-              "projectPath": "C:\\Users\\Lukas\\Desktop\\repos\\uni\\forum-project\\source\\Backend.Services\\Backend.Services.csproj"
+            "C:\\Users\\Lukas\\Desktop\\repos\\forum-project\\source\\Backend.Services\\Backend.Services.csproj": {
+              "projectPath": "C:\\Users\\Lukas\\Desktop\\repos\\forum-project\\source\\Backend.Services\\Backend.Services.csproj"
             }
           }
         }

@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Lukas\\Desktop\\repos\\uni\\forum-project\\source\\Backend.Core\\Backend.Core.csproj",
+      "projectUniqueName": "C:\\Users\\Lukas\\Desktop\\repos\\forum-project\\source\\Backend.Core\\Backend.Core.csproj",
       "projectName": "Backend.Core",
-      "projectPath": "C:\\Users\\Lukas\\Desktop\\repos\\uni\\forum-project\\source\\Backend.Core\\Backend.Core.csproj",
+      "projectPath": "C:\\Users\\Lukas\\Desktop\\repos\\forum-project\\source\\Backend.Core\\Backend.Core.csproj",
       "packagesPath": "C:\\Users\\Lukas\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Lukas\\Desktop\\repos\\uni\\forum-project\\source\\Backend.Core\\obj\\",
+      "outputPath": "C:\\Users\\Lukas\\Desktop\\repos\\forum-project\\source\\Backend.Core\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Lukas\\AppData\\Roaming\\NuGet\\NuGet.Config",

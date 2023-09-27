@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Backend.Core.Contracts;
+using Backend.Repositories.Repositories;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MySqlConnector;
 using System;
@@ -15,6 +17,9 @@ namespace Backend.Repositories.Extensions
         {
             services.AddTransient(_ => new MySqlConnection(configuration.GetConnectionString("mysql")));
 
+            services.AddTransient<IChannelRepository, ChannelRepository>();
+            services.AddTransient<IConversationRepository, ConversationRepository>();
+            services.AddTransient<IMessageRepository, MessageRepository>();
         }
     }
 }
