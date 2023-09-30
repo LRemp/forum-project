@@ -10,10 +10,11 @@ namespace Backend.Core.Contracts
 {
     public interface IMessageRepository
     {
-        public Task AddAsync(Message message);
+        public Task<long> AddAsync(Message message);
         public Task<Message?> GetAsync(int id);
         public Task<List<Message>> GetAsync();
-        public Task DeleteAsync(int id);
-        public Task UpdateAsync(Message message);
+        public Task<List<Message>> GetFilteredAsync(int id);
+        public Task<bool> DeleteAsync(int id);
+        public Task<bool> UpdateAsync(Message message);
     }
 }

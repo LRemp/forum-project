@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\repos\\uni\\forum-project\\source\\Backend.Services\\Backend.Services.csproj": {}
+    "C:\\Users\\Lukas\\Desktop\\repos\\forum-project\\source\\Backend.Services\\Backend.Services.csproj": {}
   },
   "projects": {
-    "D:\\repos\\uni\\forum-project\\source\\Backend.Core\\Backend.Core.csproj": {
+    "C:\\Users\\Lukas\\Desktop\\repos\\forum-project\\source\\Backend.Core\\Backend.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\repos\\uni\\forum-project\\source\\Backend.Core\\Backend.Core.csproj",
+        "projectUniqueName": "C:\\Users\\Lukas\\Desktop\\repos\\forum-project\\source\\Backend.Core\\Backend.Core.csproj",
         "projectName": "Backend.Core",
-        "projectPath": "D:\\repos\\uni\\forum-project\\source\\Backend.Core\\Backend.Core.csproj",
-        "packagesPath": "C:\\Users\\llbru\\.nuget\\packages\\",
-        "outputPath": "D:\\repos\\uni\\forum-project\\source\\Backend.Core\\obj\\",
+        "projectPath": "C:\\Users\\Lukas\\Desktop\\repos\\forum-project\\source\\Backend.Core\\Backend.Core.csproj",
+        "packagesPath": "C:\\Users\\Lukas\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Lukas\\Desktop\\repos\\forum-project\\source\\Backend.Core\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\llbru\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Lukas\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -55,21 +55,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\repos\\uni\\forum-project\\source\\Backend.Repositories\\Backend.Repositories.csproj": {
+    "C:\\Users\\Lukas\\Desktop\\repos\\forum-project\\source\\Backend.Repositories\\Backend.Repositories.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\repos\\uni\\forum-project\\source\\Backend.Repositories\\Backend.Repositories.csproj",
+        "projectUniqueName": "C:\\Users\\Lukas\\Desktop\\repos\\forum-project\\source\\Backend.Repositories\\Backend.Repositories.csproj",
         "projectName": "Backend.Repositories",
-        "projectPath": "D:\\repos\\uni\\forum-project\\source\\Backend.Repositories\\Backend.Repositories.csproj",
-        "packagesPath": "C:\\Users\\llbru\\.nuget\\packages\\",
-        "outputPath": "D:\\repos\\uni\\forum-project\\source\\Backend.Repositories\\obj\\",
+        "projectPath": "C:\\Users\\Lukas\\Desktop\\repos\\forum-project\\source\\Backend.Repositories\\Backend.Repositories.csproj",
+        "packagesPath": "C:\\Users\\Lukas\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Lukas\\Desktop\\repos\\forum-project\\source\\Backend.Repositories\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\llbru\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Lukas\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -83,8 +83,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\repos\\uni\\forum-project\\source\\Backend.Core\\Backend.Core.csproj": {
-                "projectPath": "D:\\repos\\uni\\forum-project\\source\\Backend.Core\\Backend.Core.csproj"
+              "C:\\Users\\Lukas\\Desktop\\repos\\forum-project\\source\\Backend.Core\\Backend.Core.csproj": {
+                "projectPath": "C:\\Users\\Lukas\\Desktop\\repos\\forum-project\\source\\Backend.Core\\Backend.Core.csproj"
               }
             }
           }
@@ -132,21 +132,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\repos\\uni\\forum-project\\source\\Backend.Services\\Backend.Services.csproj": {
+    "C:\\Users\\Lukas\\Desktop\\repos\\forum-project\\source\\Backend.Services\\Backend.Services.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\repos\\uni\\forum-project\\source\\Backend.Services\\Backend.Services.csproj",
+        "projectUniqueName": "C:\\Users\\Lukas\\Desktop\\repos\\forum-project\\source\\Backend.Services\\Backend.Services.csproj",
         "projectName": "Backend.Services",
-        "projectPath": "D:\\repos\\uni\\forum-project\\source\\Backend.Services\\Backend.Services.csproj",
-        "packagesPath": "C:\\Users\\llbru\\.nuget\\packages\\",
-        "outputPath": "D:\\repos\\uni\\forum-project\\source\\Backend.Services\\obj\\",
+        "projectPath": "C:\\Users\\Lukas\\Desktop\\repos\\forum-project\\source\\Backend.Services\\Backend.Services.csproj",
+        "packagesPath": "C:\\Users\\Lukas\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Lukas\\Desktop\\repos\\forum-project\\source\\Backend.Services\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\llbru\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Lukas\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -160,11 +160,11 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\repos\\uni\\forum-project\\source\\Backend.Core\\Backend.Core.csproj": {
-                "projectPath": "D:\\repos\\uni\\forum-project\\source\\Backend.Core\\Backend.Core.csproj"
+              "C:\\Users\\Lukas\\Desktop\\repos\\forum-project\\source\\Backend.Core\\Backend.Core.csproj": {
+                "projectPath": "C:\\Users\\Lukas\\Desktop\\repos\\forum-project\\source\\Backend.Core\\Backend.Core.csproj"
               },
-              "D:\\repos\\uni\\forum-project\\source\\Backend.Repositories\\Backend.Repositories.csproj": {
-                "projectPath": "D:\\repos\\uni\\forum-project\\source\\Backend.Repositories\\Backend.Repositories.csproj"
+              "C:\\Users\\Lukas\\Desktop\\repos\\forum-project\\source\\Backend.Repositories\\Backend.Repositories.csproj": {
+                "projectPath": "C:\\Users\\Lukas\\Desktop\\repos\\forum-project\\source\\Backend.Repositories\\Backend.Repositories.csproj"
               }
             }
           }
@@ -204,7 +204,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
         }
       }
     }

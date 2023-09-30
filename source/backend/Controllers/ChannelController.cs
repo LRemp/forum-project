@@ -20,7 +20,11 @@ namespace Backend.API.Controllers
         public async Task<IActionResult> Get()
         {
             var result = await _channelService.Get();
-            return Ok(result);
+            if (result != null && result.Count > 0)
+            {
+                return Ok(result);
+            }
+            return NoContent();
         }
 
         // GET api/<ChannelController>/5
@@ -28,7 +32,11 @@ namespace Backend.API.Controllers
         public async Task<IActionResult> Get(int id)
         {
             var result = await _channelService.Get(id);
-            return Ok(result);
+            if (result != null)
+            {
+                return Ok(result);
+            }
+            return NoContent();
         }
 
         // POST api/<ChannelController>

@@ -15,11 +15,11 @@ namespace Backend.Services.Services
             _channelRepository = channelRepository;
         }
 
-        public async Task<ChannelDTO?> Add(ChannelDTO channelDTO)
+        public async Task<long> Add(ChannelDTO channelDTO)
         {
             var channel = _mapper.Map<Channel>(channelDTO);
             var result = await _channelRepository.AddAsync(channel);
-            return result != null ? _mapper.Map<ChannelDTO>(result) : null;
+            return result;
         }
 
         public async Task<bool> Delete(int id)

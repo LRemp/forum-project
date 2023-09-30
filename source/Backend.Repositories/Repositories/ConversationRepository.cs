@@ -19,19 +19,20 @@ namespace Backend.Repositories.Repositories
             _mysqlConnection = mysqlConnection;
             _mysqlConnection.Open();
         }
-        public async Task<int> AddAsync(Conversation conversation)
+        public async Task<long> AddAsync(Conversation conversation)
         {
             var query = @"INSERT INTO conversation(name, description, author, channel)
-                            VALUES(@name, @description, @author, @channel)";
+                            VALUES(@name, @description, @author, @channel);
+                            SELECT LAST_INSERT_ID()";
             
-            await _mysqlConnection.QueryAsync(query, new
+            var rowId = await _mysqlConnection.ExecuteScalarAsync<long>(query, new
             {
                 name = conversation.Name,
                 description = conversation.Description,
                 author = conversation.Author,
                 channel = conversation.Channel
             });
-            return 0;
+            return rowId;
         }
 
         public async Task<bool> DeleteAsync(int id)

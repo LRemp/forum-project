@@ -10,12 +10,12 @@ namespace Backend.Core.Contracts
 {
     public interface IMessageService
     {
-        public Task Add(CreateMessageDTO createMessageDTO, User user);
+        public Task<long> Add(CreateMessageDTO createMessageDTO, User user);
         public Task<Message> Get(int id);
         public Task<List<Message>> GetAll();
         public Task<List<Message>> GetConversationMessages(int conversation);
-        public Task Delete(int id);
-        public Task Update(CreateMessageDTO createMessageDTO, int id, User user);
+        public Task<bool> Delete(int id);
+        public Task<bool> Update(CreateMessageDTO createMessageDTO, int id, User user);
 
     }
 }

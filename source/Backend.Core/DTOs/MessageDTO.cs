@@ -10,6 +10,7 @@ namespace Backend.Core.DTOs
     public class MessageDTO
     {
         public string Text { get; set; }
+        public DateTime Created { get; set; }
         public User Author { get; set; }
         public Conversation Conversation { get; set; }
     }

@@ -20,16 +20,16 @@ namespace Backend.Services.Services
             _mapper = mapper;
         }
 
-        public async Task Add(CreateMessageDTO createMessageDTO, User user)
+        public async Task<long> Add(CreateMessageDTO createMessageDTO, User user)
         {
             var message = _mapper.Map<Message>(createMessageDTO);
             message.Author = user.Id;
-            await _messageRepository.AddAsync(message);
+            return await _messageRepository.AddAsync(message);
         }
 
-        public async Task Delete(int id)
+        public async Task<bool> Delete(int id)
         {
-            await _messageRepository.DeleteAsync(id);
+            return await _messageRepository.DeleteAsync(id);
         }
 
         public async Task<Message> Get(int id)
@@ -44,16 +44,17 @@ namespace Backend.Services.Services
             return messages;
         }
 
-        public Task<List<Message>> GetConversationMessages(int conversation)
+        public async Task<List<Message>> GetConversationMessages(int conversation)
         {
-            throw new NotImplementedException();
+            var messages = await _messageRepository.GetFilteredAsync(conversation);
+            return messages;
         }
 
-        public async Task Update(CreateMessageDTO createMessageDTO, int id, User user)
+        public async Task<bool> Update(CreateMessageDTO createMessageDTO, int id, User user)
         {
             var message = _mapper.Map<Message>(createMessageDTO);
             message.Id = id;
-            await _messageRepository.UpdateAsync(message);
+            return await _messageRepository.UpdateAsync(message);
         }
     }
 }

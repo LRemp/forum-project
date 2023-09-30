@@ -30,7 +30,11 @@ namespace Backend.API.Controllers
         public async Task<IActionResult> Get()
         {
             var messages = await _messageService.GetAll();
-            return Ok(messages);
+            if(messages != null && messages.Count > 0)
+            {
+                return Ok(messages);
+            }
+            return NoContent();
         }
 
         // GET api/<MessageController>/5
@@ -38,30 +42,50 @@ namespace Backend.API.Controllers
         public async Task<IActionResult> Get(int id)
         {
             var message = await _messageService.Get(id);
-            return Ok(message);
+            if(message != null)
+            {
+                return Ok(message);
+            }
+            return NoContent();
         }
 
         // POST api/<MessageController>
         [HttpPost]
         public async Task<IActionResult> Post(CreateMessageDTO createMessageDTO)
         {
-            await _messageService.Add(createMessageDTO, user);
-            return NoContent();
+            var result = await _messageService.Add(createMessageDTO, user);
+            if (result > 0)
+            {
+                return Ok(new
+                {
+                    id = result
+                });
+            }
+            return BadRequest("Wrong provided data");
         }
 
         // PUT api/<MessageController>/5
         [HttpPut("{id}")]
         public async Task<IActionResult> Put(CreateMessageDTO createMessageDTO, int id)
         {
-            await _messageService.Update(createMessageDTO, id, user);
-            return NoContent();
+            var result = await _messageService.Update(createMessageDTO, id, user);
+            if (result)
+            {
+                return Ok();
+            }
+            return BadRequest("Wrong provided data");
         }
 
         // DELETE api/<MessageController>/5
         [HttpDelete("{id}")]
-        public async void Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            await _messageService.Delete(id);
+            var result = await _messageService.Delete(id);
+            if(result)
+            {
+                return Ok();
+            }
+            return BadRequest("Wrong provided id");
         }
     }
 }

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "M1s4ImJyCwddbd3Ed10bcslcUekRSJEsHShool8cKRGSlcy++5L1sUG+Ukixp2o0DdB6gq5rYhYX8T6Z8R91MQ==",
+  "dgSpecHash": "4D/1J8vkUiE6CC6bDLcXU7yy78S5JaIqug8vDaCEEjTbcR0upFuWNpBzZjcthSyCBYeMIWQMggLV/BuKcjm2gA==",
   "success": true,
-  "projectFilePath": "D:\\repos\\uni\\forum-project\\source\\Backend.Core\\Backend.Core.csproj",
+  "projectFilePath": "C:\\Users\\Lukas\\Desktop\\repos\\forum-project\\source\\Backend.Core\\Backend.Core.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

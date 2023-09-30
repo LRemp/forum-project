@@ -20,7 +20,11 @@ namespace Backend.API.Controllers
         public async Task<IActionResult> Get()
         {
             var result = await _conversationService.Get();
-            return Ok(result);
+            if(result != null && result.Count > 0)
+            {
+                return Ok(result);
+            }
+            return NoContent();
         }
 
         // GET api/<ConversationController>/5
@@ -28,31 +32,50 @@ namespace Backend.API.Controllers
         public async Task<IActionResult> Get(int id)
         {
             var result = await _conversationService.Get(id);
-            return Ok(result);
+            if (result != null)
+            {
+                return Ok(result);
+            }
+            return NoContent();
         }
 
         // POST api/<ConversationController>
         [HttpPost]
         public async Task<IActionResult> Post(CreateConversationDTO createConversationDTO, int id)
         {
-            await _conversationService.Add(createConversationDTO, id);
-            return NoContent();
+            var result = await _conversationService.Add(createConversationDTO, id);
+            if(result > 0)
+            {
+                return Ok(new
+                {
+                    id = result
+                });
+            }
+            return BadRequest("Wrong provided data");
         }
 
         // PUT api/<ConversationController>/5
         [HttpPut("{id}")]
         public async Task<IActionResult> Put(CreateConversationDTO createConversationDTO, int id)
         {
-            await _conversationService.Update(createConversationDTO, id);
-            return NoContent();
+            var result = await _conversationService.Update(createConversationDTO, id);
+            if (result)
+            {
+                return Ok();
+            }
+            return BadRequest("Wrong provided data");
         }
 
         // DELETE api/<ConversationController>/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
-            await _conversationService.Delete(id);
-            return NoContent();
+            var result = await _conversationService.Delete(id);
+            if (result)
+            {
+                return Ok();
+            }
+            return BadRequest("Wrong data id");
         }
     }
 }

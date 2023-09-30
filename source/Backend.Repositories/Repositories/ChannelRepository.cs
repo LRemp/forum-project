@@ -20,17 +20,18 @@ namespace Backend.Repositories.Repositories
             _mysqlConnection.Open();
         }
 
-        public async Task<int> AddAsync(Channel channel)
+        public async Task<long> AddAsync(Channel channel)
         {
             var query = @"INSERT INTO channels(name, description)
-                            VALUES(@name, @description)";
+                            VALUES(@name, @description);
+                            SELECT LAST_INSERT_ID();";
 
-            await _mysqlConnection.QueryAsync(query, new
+            var rowId = await _mysqlConnection.ExecuteScalarAsync<long>(query, new
             {
                 name = channel.Name,
                 description = channel.Description
             });
-            return 0;
+            return rowId;
         }
 
         public async Task<bool> DeleteAsync(int id)

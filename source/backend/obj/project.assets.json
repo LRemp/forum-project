@@ -10423,19 +10423,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\llbru\\.nuget\\packages\\": {}
+    "C:\\Users\\Lukas\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\repos\\uni\\forum-project\\source\\backend\\Backend.API.csproj",
+      "projectUniqueName": "C:\\Users\\Lukas\\Desktop\\repos\\forum-project\\source\\backend\\Backend.API.csproj",
       "projectName": "Backend.API",
-      "projectPath": "D:\\repos\\uni\\forum-project\\source\\backend\\Backend.API.csproj",
-      "packagesPath": "C:\\Users\\llbru\\.nuget\\packages\\",
-      "outputPath": "D:\\repos\\uni\\forum-project\\source\\backend\\obj\\",
+      "projectPath": "C:\\Users\\Lukas\\Desktop\\repos\\forum-project\\source\\backend\\Backend.API.csproj",
+      "packagesPath": "C:\\Users\\Lukas\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Lukas\\Desktop\\repos\\forum-project\\source\\backend\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\llbru\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Lukas\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -10443,18 +10443,17 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\sdk\\7.0.304\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "D:\\repos\\uni\\forum-project\\source\\Backend.Core\\Backend.Core.csproj": {
-              "projectPath": "D:\\repos\\uni\\forum-project\\source\\Backend.Core\\Backend.Core.csproj"
+            "C:\\Users\\Lukas\\Desktop\\repos\\forum-project\\source\\Backend.Core\\Backend.Core.csproj": {
+              "projectPath": "C:\\Users\\Lukas\\Desktop\\repos\\forum-project\\source\\Backend.Core\\Backend.Core.csproj"
             },
-            "D:\\repos\\uni\\forum-project\\source\\Backend.Services\\Backend.Services.csproj": {
-              "projectPath": "D:\\repos\\uni\\forum-project\\source\\Backend.Services\\Backend.Services.csproj"
+            "C:\\Users\\Lukas\\Desktop\\repos\\forum-project\\source\\Backend.Services\\Backend.Services.csproj": {
+              "projectPath": "C:\\Users\\Lukas\\Desktop\\repos\\forum-project\\source\\Backend.Services\\Backend.Services.csproj"
             }
           }
         }
@@ -10505,7 +10504,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
       }
     }
   }

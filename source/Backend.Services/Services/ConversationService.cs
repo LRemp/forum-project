@@ -19,18 +19,19 @@ namespace Backend.Services.Services
             _conversationRepository = conversationRepository;
             _mapper = mapper;
         }
-        public async Task Add(CreateConversationDTO createConversationDTO, int id)
+        public async Task<long> Add(CreateConversationDTO createConversationDTO, int id)
         {
             var conversation = _mapper.Map<Conversation>(createConversationDTO);
-            await _conversationRepository.AddAsync(conversation);
+            conversation.Channel = id;
+            return await _conversationRepository.AddAsync(conversation);
         }
 
-        public async Task Delete(int id)
+        public async Task<bool> Delete(int id)
         {
-            await _conversationRepository.DeleteAsync(id);
+            return await _conversationRepository.DeleteAsync(id);
         }
 
-        public async Task<ConversationDTO> Get(int id)
+        public async Task<ConversationDTO?> Get(int id)
         {
             var conversation = await _conversationRepository.GetAsync(id);
             var conversationDTO = _mapper.Map<ConversationDTO>(conversation);
@@ -44,10 +45,11 @@ namespace Backend.Services.Services
             return conversationsDTO;
         }
 
-        public async Task Update(CreateConversationDTO createConversationDTO, int id)
+        public async Task<bool> Update(CreateConversationDTO createConversationDTO, int id)
         {
             var conversation = _mapper.Map<Conversation>(createConversationDTO);
-            await _conversationRepository.UpdateAsync(conversation);
+            conversation.Id = id;
+            return await _conversationRepository.UpdateAsync(conversation);
         }
     }
 }
