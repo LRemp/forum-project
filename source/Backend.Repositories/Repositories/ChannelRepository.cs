@@ -20,9 +20,9 @@ namespace Backend.Repositories.Repositories
             _mysqlConnection.Open();
         }
 
-        public async Task AddAsync(Channel channel)
+        public async Task<int> AddAsync(Channel channel)
         {
-            var query = @"INSERT INTO conversation(name, description)
+            var query = @"INSERT INTO channels(name, description)
                             VALUES(@name, @description)";
 
             await _mysqlConnection.QueryAsync(query, new
@@ -30,18 +30,20 @@ namespace Backend.Repositories.Repositories
                 name = channel.Name,
                 description = channel.Description
             });
+            return 0;
         }
 
-        public async Task DeleteAsync(int id)
+        public async Task<bool> DeleteAsync(int id)
         {
-            var query = @"DELETE FROM channel WHERE id = @id";
-            await _mysqlConnection.ExecuteAsync(query, new { id });
+            var query = @"DELETE FROM channels WHERE id = @id";
+            var affectedRows = await _mysqlConnection.ExecuteAsync(query, new { id });
+            return affectedRows > 0;
         }
 
         public async Task<Channel?> GetAsync(int id)
         {
             var query = @"SELECT * FROM channels WHERE id = @id";
-            var result = await _mysqlConnection.QueryAsync(query, new { id });
+            var result = await _mysqlConnection.QueryAsync<Channel>(query, new { id });
             return result.FirstOrDefault();
         }
 
@@ -50,6 +52,21 @@ namespace Backend.Repositories.Repositories
             var query = @"SELECT * FROM channels";
             var result = await _mysqlConnection.QueryAsync<Channel>(query);
             return result.ToList();
+        }
+
+        public async Task<bool> UpdateAsync(Channel channel)
+        {
+            var query = @"UPDATE channels
+                            SET name = @name, description = @description
+                            WHERE id = @id";
+            
+            var affectedRows = await _mysqlConnection.ExecuteAsync(query, new
+            {
+                id = channel.Id,
+                name = channel.Name,
+                description = channel.Description
+            });
+            return affectedRows > 0;
         }
     }
 }

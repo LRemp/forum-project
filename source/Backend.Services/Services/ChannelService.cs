@@ -9,31 +9,43 @@ namespace Backend.Services.Services
     {
         private readonly IMapper _mapper;
         private readonly IChannelRepository _channelRepository;
-        public async Task Add(ChannelDTO channelDTO)
+        public ChannelService(IMapper mapper, IChannelRepository channelRepository)
+        {
+            _mapper = mapper;
+            _channelRepository = channelRepository;
+        }
+
+        public async Task<ChannelDTO?> Add(ChannelDTO channelDTO)
         {
             var channel = _mapper.Map<Channel>(channelDTO);
-            await _channelRepository.AddAsync(channel);
+            var result = await _channelRepository.AddAsync(channel);
+            return result != null ? _mapper.Map<ChannelDTO>(result) : null;
         }
 
-        public async Task Delete(int id)
+        public async Task<bool> Delete(int id)
         {
-            await _channelRepository.DeleteAsync(id);
+            return await _channelRepository.DeleteAsync(id);
         }
 
-        public Task<ChannelDTO> Get(int id)
+        public async Task<ChannelDTO?> Get(int id)
         {
-
-            throw new NotImplementedException();
+            var result = await _channelRepository.GetAsync(id);
+            return result != null ? _mapper.Map<ChannelDTO>(result) : null;
         }
 
-        public Task<List<ChannelDTO>> Get()
+        public async Task<List<ChannelDTO>> Get()
         {
-            throw new NotImplementedException();
+            var result = await _channelRepository.GetAsync();
+            var channels = _mapper.Map<List<ChannelDTO>>(result);
+            return channels;
         }
 
-        public Task Update(ChannelDTO channelDTO)
+        public async Task<bool> Update(ChannelDTO channelDTO, int id)
         {
-            throw new NotImplementedException();
+            var channel = _mapper.Map<Channel>(channelDTO);
+            channel.Id = id;
+            var result = await _channelRepository.UpdateAsync(channel);
+            return result;
         }
     }
 }

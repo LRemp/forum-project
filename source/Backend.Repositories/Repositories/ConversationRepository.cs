@@ -19,7 +19,7 @@ namespace Backend.Repositories.Repositories
             _mysqlConnection = mysqlConnection;
             _mysqlConnection.Open();
         }
-        public async Task AddAsync(Conversation conversation)
+        public async Task<int> AddAsync(Conversation conversation)
         {
             var query = @"INSERT INTO conversation(name, description, author, channel)
                             VALUES(@name, @description, @author, @channel)";
@@ -31,12 +31,14 @@ namespace Backend.Repositories.Repositories
                 author = conversation.Author,
                 channel = conversation.Channel
             });
+            return 0;
         }
 
-        public async Task DeleteAsync(int id)
+        public async Task<bool> DeleteAsync(int id)
         {
             var query = @"DELETE FROM conversations WHERE id = @id";
-            await _mysqlConnection.ExecuteAsync(query, new { id });
+            var affectedRows = await _mysqlConnection.ExecuteAsync(query, new { id });
+            return affectedRows > 0;
         }
 
         public async Task<Conversation?> GetAsync(int id)
@@ -53,18 +55,19 @@ namespace Backend.Repositories.Repositories
             return result.ToList();
         }
 
-        public async Task UpdateAsync(Conversation conversation)
+        public async Task<bool> UpdateAsync(Conversation conversation)
         {
             var query = @"UPDATE conversations
                             SET name = @name, description = @description
                             WHERE id = @id";
 
-            await _mysqlConnection.ExecuteAsync(query, new
+            var affectedRows = await _mysqlConnection.ExecuteAsync(query, new
             {
                 id = conversation.Id,
                 name = conversation.Name,
                 description = conversation.Description
             });
+            return affectedRows > 0;
         }
     }
 }

@@ -14,7 +14,7 @@ namespace Backend.Services.Extensions
 {
     public static class ServiceExtension
     {
-        public static void AddService(this IServiceCollection services, IConfiguration configuration)
+        public static void AddServices(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddAutoMapper(typeof(MessageMappingProfile));
             services.AddAutoMapper(typeof(ConversationMappingProfile));
@@ -22,6 +22,7 @@ namespace Backend.Services.Extensions
 
             services.AddTransient<IMessageService, MessageService>();
             services.AddTransient<IConversationService, ConversationService>();
+            services.AddTransient<IChannelService, ChannelService>();
         }
     }
 }

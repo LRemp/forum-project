@@ -10,10 +10,10 @@ namespace Backend.Core.Contracts
 {
     public interface IConversationRepository
     {
-        public Task AddAsync(Conversation conversation);
+        public Task<int> AddAsync(Conversation conversation);
         public Task<Conversation?> GetAsync(int id);
         public Task<List<Conversation>> GetAsync();
-        public Task DeleteAsync(int id);
-        public Task UpdateAsync(Conversation conversation);
+        public Task<bool> DeleteAsync(int id);
+        public Task<bool> UpdateAsync(Conversation conversation);
     }
 }

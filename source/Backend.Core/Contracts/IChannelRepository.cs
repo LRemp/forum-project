@@ -10,9 +10,10 @@ namespace Backend.Core.Contracts
 {
     public interface IChannelRepository
     {
-        public Task AddAsync(Channel channel);
+        public Task<int> AddAsync(Channel channel);
         public Task<Channel?> GetAsync(int id);
         public Task<List<Channel>> GetAsync();
-        public Task DeleteAsync(int id);
+        public Task<bool> DeleteAsync(int id);
+        public Task<bool> UpdateAsync(Channel channel);
     }
 }
