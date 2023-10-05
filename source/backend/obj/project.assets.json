@@ -10523,19 +10523,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Lukas\\.nuget\\packages\\": {}
+    "C:\\Users\\llbru\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Lukas\\Desktop\\repos\\forum-project\\source\\backend\\Backend.API.csproj",
+      "projectUniqueName": "D:\\repos\\uni\\forum-project\\source\\backend\\Backend.API.csproj",
       "projectName": "Backend.API",
-      "projectPath": "C:\\Users\\Lukas\\Desktop\\repos\\forum-project\\source\\backend\\Backend.API.csproj",
-      "packagesPath": "C:\\Users\\Lukas\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Lukas\\Desktop\\repos\\forum-project\\source\\backend\\obj\\",
+      "projectPath": "D:\\repos\\uni\\forum-project\\source\\backend\\Backend.API.csproj",
+      "packagesPath": "C:\\Users\\llbru\\.nuget\\packages\\",
+      "outputPath": "D:\\repos\\uni\\forum-project\\source\\backend\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Lukas\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\llbru\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -10549,11 +10549,11 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "C:\\Users\\Lukas\\Desktop\\repos\\forum-project\\source\\Backend.Core\\Backend.Core.csproj": {
-              "projectPath": "C:\\Users\\Lukas\\Desktop\\repos\\forum-project\\source\\Backend.Core\\Backend.Core.csproj"
+            "D:\\repos\\uni\\forum-project\\source\\Backend.Core\\Backend.Core.csproj": {
+              "projectPath": "D:\\repos\\uni\\forum-project\\source\\Backend.Core\\Backend.Core.csproj"
             },
-            "C:\\Users\\Lukas\\Desktop\\repos\\forum-project\\source\\Backend.Services\\Backend.Services.csproj": {
-              "projectPath": "C:\\Users\\Lukas\\Desktop\\repos\\forum-project\\source\\Backend.Services\\Backend.Services.csproj"
+            "D:\\repos\\uni\\forum-project\\source\\Backend.Services\\Backend.Services.csproj": {
+              "projectPath": "D:\\repos\\uni\\forum-project\\source\\Backend.Services\\Backend.Services.csproj"
             }
           }
         }

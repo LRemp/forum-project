@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Backend.API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/channels/{channelId}/conversations/{conversationId}/messages")]
     [ApiController]
     public class MessageController : ControllerBase
     {
@@ -27,7 +27,7 @@ namespace Backend.API.Controllers
 
         // GET: api/<MessageController>
         [HttpGet]
-        public async Task<IActionResult> Get()
+        public async Task<IActionResult> Get(int channelId, int conversationId)
         {
             var messages = await _messageService.GetAll();
             if(messages != null && messages.Count > 0)
@@ -38,10 +38,10 @@ namespace Backend.API.Controllers
         }
 
         // GET api/<MessageController>/5
-        [HttpGet("{id}")]
-        public async Task<IActionResult> Get(int id)
+        [HttpGet("{messageId}")]
+        public async Task<IActionResult> Get(int channelId, int conversationId, int messageId)
         {
-            var message = await _messageService.Get(id);
+            var message = await _messageService.Get(messageId);
             if(message != null)
             {
                 return Ok(message);
@@ -51,7 +51,7 @@ namespace Backend.API.Controllers
 
         // POST api/<MessageController>
         [HttpPost]
-        public async Task<IActionResult> Post(CreateMessageDTO createMessageDTO)
+        public async Task<IActionResult> Post(int channelId, int conversationId, CreateMessageDTO createMessageDTO)
         {
             var result = await _messageService.Add(createMessageDTO, user);
             if (result > 0)
@@ -65,10 +65,10 @@ namespace Backend.API.Controllers
         }
 
         // PUT api/<MessageController>/5
-        [HttpPut("{id}")]
-        public async Task<IActionResult> Put(CreateMessageDTO createMessageDTO, int id)
+        [HttpPut("{messageId}")]
+        public async Task<IActionResult> Put(int channelId, int conversationId, int messageId, CreateMessageDTO createMessageDTO)
         {
-            var result = await _messageService.Update(createMessageDTO, id, user);
+            var result = await _messageService.Update(createMessageDTO, messageId, user);
             if (result)
             {
                 return Ok();
@@ -77,10 +77,10 @@ namespace Backend.API.Controllers
         }
 
         // DELETE api/<MessageController>/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int id)
+        [HttpDelete("{messageId}")]
+        public async Task<IActionResult> Delete(int channelId, int conversationId, int messageId)
         {
-            var result = await _messageService.Delete(id);
+            var result = await _messageService.Delete(messageId);
             if(result)
             {
                 return Ok();

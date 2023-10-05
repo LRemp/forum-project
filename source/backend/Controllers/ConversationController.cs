@@ -2,13 +2,12 @@
 using Backend.Core.DTOs;
 using Microsoft.AspNetCore.Mvc;
 using O9d.AspNet.FluentValidation;
-using System.ComponentModel.DataAnnotations;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace Backend.API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/channels/{channelId}/conversations")]
     [ApiController]
     public class ConversationController : ControllerBase
     {
@@ -19,7 +18,7 @@ namespace Backend.API.Controllers
         }
         // GET: api/<ConversationController>
         [HttpGet]
-        public async Task<IActionResult> Get()
+        public async Task<IActionResult> Get(int channelId)
         {
             var result = await _conversationService.Get();
             if(result != null && result.Count > 0)
@@ -30,10 +29,10 @@ namespace Backend.API.Controllers
         }
 
         // GET api/<ConversationController>/5
-        [HttpGet("{id}")]
-        public async Task<IActionResult> Get(int id)
+        [HttpGet("{conversationId}")]
+        public async Task<IActionResult> Get(int channelId, int conversationId)
         {
-            var result = await _conversationService.Get(id);
+            var result = await _conversationService.Get(channelId);
             if (result != null)
             {
                 return Ok(result);
@@ -43,9 +42,9 @@ namespace Backend.API.Controllers
 
         // POST api/<ConversationController>
         [HttpPost]
-        public async Task<IActionResult> Post([Validate]CreateConversationDTO createConversationDTO, int id)
+        public async Task<IActionResult> Post(int channelId, [Validate]CreateConversationDTO createConversationDTO)
         {
-            var result = await _conversationService.Add(createConversationDTO, id);
+            var result = await _conversationService.Add(createConversationDTO, channelId);
             if(result > 0)
             {
                 return Ok(new
@@ -58,9 +57,9 @@ namespace Backend.API.Controllers
 
         // PUT api/<ConversationController>/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> Put(CreateConversationDTO createConversationDTO, int id)
+        public async Task<IActionResult> Put(int channelId, int conversationId, CreateConversationDTO createConversationDTO)
         {
-            var result = await _conversationService.Update(createConversationDTO, id);
+            var result = await _conversationService.Update(createConversationDTO, conversationId);
             if (result)
             {
                 return Ok();
@@ -69,10 +68,10 @@ namespace Backend.API.Controllers
         }
 
         // DELETE api/<ConversationController>/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int id)
+        [HttpDelete("{conversationId}")]
+        public async Task<IActionResult> Delete(int channelId, int conversationId)
         {
-            var result = await _conversationService.Delete(id);
+            var result = await _conversationService.Delete(conversationId);
             if (result)
             {
                 return Ok();

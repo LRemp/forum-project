@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Backend.API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/channels")]
     [ApiController]
     public class ChannelController : ControllerBase
     {
@@ -28,10 +28,10 @@ namespace Backend.API.Controllers
         }
 
         // GET api/<ChannelController>/5
-        [HttpGet("{id}")]
-        public async Task<IActionResult> Get(int id)
+        [HttpGet("{channelId}")]
+        public async Task<IActionResult> Get(int channelId)
         {
-            var result = await _channelService.Get(id);
+            var result = await _channelService.Get(channelId);
             if (result != null)
             {
                 return Ok(result);
@@ -52,10 +52,10 @@ namespace Backend.API.Controllers
         }
 
         // PUT api/<ChannelController>/5
-        [HttpPut("{id}")]
-        public async Task<IActionResult> Put(ChannelDTO channelDTO, int id)
+        [HttpPut("{channelId}")]
+        public async Task<IActionResult> Put(int channelId, ChannelDTO channelDTO)
         {
-            var result = await _channelService.Update(channelDTO, id);
+            var result = await _channelService.Update(channelDTO, channelId);
             if (result)
             {
                 return Ok();
@@ -64,10 +64,10 @@ namespace Backend.API.Controllers
         }
 
         // DELETE api/<ChannelController>/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int id)
+        [HttpDelete("{channelId}")]
+        public async Task<IActionResult> Delete(int channelId)
         {
-            var result = await _channelService.Delete(id);
+            var result = await _channelService.Delete(channelId);
             if (result)
             {
                 return Ok();

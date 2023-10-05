@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Lukas\\Desktop\\repos\\forum-project\\source\\Backend.Repositories\\Backend.Repositories.csproj": {}
+    "D:\\repos\\uni\\forum-project\\source\\Backend.Repositories\\Backend.Repositories.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Lukas\\Desktop\\repos\\forum-project\\source\\Backend.Core\\Backend.Core.csproj": {
+    "D:\\repos\\uni\\forum-project\\source\\Backend.Core\\Backend.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Lukas\\Desktop\\repos\\forum-project\\source\\Backend.Core\\Backend.Core.csproj",
+        "projectUniqueName": "D:\\repos\\uni\\forum-project\\source\\Backend.Core\\Backend.Core.csproj",
         "projectName": "Backend.Core",
-        "projectPath": "C:\\Users\\Lukas\\Desktop\\repos\\forum-project\\source\\Backend.Core\\Backend.Core.csproj",
-        "packagesPath": "C:\\Users\\Lukas\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Lukas\\Desktop\\repos\\forum-project\\source\\Backend.Core\\obj\\",
+        "projectPath": "D:\\repos\\uni\\forum-project\\source\\Backend.Core\\Backend.Core.csproj",
+        "packagesPath": "C:\\Users\\llbru\\.nuget\\packages\\",
+        "outputPath": "D:\\repos\\uni\\forum-project\\source\\Backend.Core\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Lukas\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\llbru\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -65,17 +65,17 @@
         }
       }
     },
-    "C:\\Users\\Lukas\\Desktop\\repos\\forum-project\\source\\Backend.Repositories\\Backend.Repositories.csproj": {
+    "D:\\repos\\uni\\forum-project\\source\\Backend.Repositories\\Backend.Repositories.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Lukas\\Desktop\\repos\\forum-project\\source\\Backend.Repositories\\Backend.Repositories.csproj",
+        "projectUniqueName": "D:\\repos\\uni\\forum-project\\source\\Backend.Repositories\\Backend.Repositories.csproj",
         "projectName": "Backend.Repositories",
-        "projectPath": "C:\\Users\\Lukas\\Desktop\\repos\\forum-project\\source\\Backend.Repositories\\Backend.Repositories.csproj",
-        "packagesPath": "C:\\Users\\Lukas\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Lukas\\Desktop\\repos\\forum-project\\source\\Backend.Repositories\\obj\\",
+        "projectPath": "D:\\repos\\uni\\forum-project\\source\\Backend.Repositories\\Backend.Repositories.csproj",
+        "packagesPath": "C:\\Users\\llbru\\.nuget\\packages\\",
+        "outputPath": "D:\\repos\\uni\\forum-project\\source\\Backend.Repositories\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Lukas\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\llbru\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -89,8 +89,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\Lukas\\Desktop\\repos\\forum-project\\source\\Backend.Core\\Backend.Core.csproj": {
-                "projectPath": "C:\\Users\\Lukas\\Desktop\\repos\\forum-project\\source\\Backend.Core\\Backend.Core.csproj"
+              "D:\\repos\\uni\\forum-project\\source\\Backend.Core\\Backend.Core.csproj": {
+                "projectPath": "D:\\repos\\uni\\forum-project\\source\\Backend.Core\\Backend.Core.csproj"
               }
             }
           }
