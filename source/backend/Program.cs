@@ -1,5 +1,7 @@
 using Backend.Repositories.Extensions;
 using Backend.Services.Extensions;
+using FluentValidation;
+using O9d.AspNet.FluentValidation;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,6 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRepositories(builder.Configuration);
 
 builder.Services.AddServices(builder.Configuration);
+builder.Services.AddValidatorsFromAssemblyContaining<Program>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

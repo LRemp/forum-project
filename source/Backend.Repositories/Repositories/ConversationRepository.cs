@@ -21,7 +21,7 @@ namespace Backend.Repositories.Repositories
         }
         public async Task<long> AddAsync(Conversation conversation)
         {
-            var query = @"INSERT INTO conversation(name, description, author, channel)
+            var query = @"INSERT INTO conversations(name, description, author, channel)
                             VALUES(@name, @description, @author, @channel);
                             SELECT LAST_INSERT_ID()";
             

@@ -32,3 +32,4 @@ C:\Users\Lukas\Desktop\repos\forum-project\source\Backend.Core\obj\Debug\net6.0\
 C:\Users\Lukas\Desktop\repos\forum-project\source\Backend.Core\obj\Debug\net6.0\refint\Backend.Core.dll
 C:\Users\Lukas\Desktop\repos\forum-project\source\Backend.Core\obj\Debug\net6.0\Backend.Core.pdb
 C:\Users\Lukas\Desktop\repos\forum-project\source\Backend.Core\obj\Debug\net6.0\ref\Backend.Core.dll
+C:\Users\Lukas\Desktop\repos\forum-project\source\Backend.Core\obj\Debug\net6.0\Backend.Core.csproj.AssemblyReference.cache

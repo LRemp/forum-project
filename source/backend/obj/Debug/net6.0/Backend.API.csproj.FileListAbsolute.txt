@@ -485,3 +485,5 @@ C:\Users\Lukas\Desktop\repos\forum-project\source\backend\obj\Debug\net6.0\scope
 C:\Users\Lukas\Desktop\repos\forum-project\source\backend\obj\Debug\net6.0\Backend.API.csproj.CopyComplete
 C:\Users\Lukas\Desktop\repos\forum-project\source\backend\obj\Debug\net6.0\Backend.API.genruntimeconfig.cache
 C:\Users\Lukas\Desktop\repos\forum-project\source\backend\obj\Debug\net6.0\ref\Backend.API.dll
+C:\Users\Lukas\Desktop\repos\forum-project\source\backend\bin\Debug\net6.0\FluentValidation.dll
+C:\Users\Lukas\Desktop\repos\forum-project\source\backend\bin\Debug\net6.0\FluentValidation.DependencyInjectionExtensions.dll

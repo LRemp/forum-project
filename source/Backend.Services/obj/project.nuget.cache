@@ -1,12 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "TZ+FKsXyR9xXdo3Ny4gUaPoC5PBx3U28OS33eJJXRmcLz2E47PpiwZbyTak3i7Zaq4htlQnbEGib18qykYt2Eg==",
+  "dgSpecHash": "jOgIvxGtTGnhyinrmMHUnngFqFEX68P4YL800/uMJ9Ro5qIO77e1RLN0N1uCZvOkHQyaOydwPXZ3vjJwwCdqrQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\Lukas\\Desktop\\repos\\forum-project\\source\\Backend.Services\\Backend.Services.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Lukas\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\Lukas\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
     "C:\\Users\\Lukas\\.nuget\\packages\\dapper\\2.0.151\\dapper.2.0.151.nupkg.sha512",
+    "C:\\Users\\Lukas\\.nuget\\packages\\fluentvalidation\\11.7.1\\fluentvalidation.11.7.1.nupkg.sha512",
     "C:\\Users\\Lukas\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\Lukas\\.nuget\\packages\\microsoft.extensions.configuration\\7.0.0\\microsoft.extensions.configuration.7.0.0.nupkg.sha512",
     "C:\\Users\\Lukas\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\7.0.0\\microsoft.extensions.configuration.abstractions.7.0.0.nupkg.sha512",

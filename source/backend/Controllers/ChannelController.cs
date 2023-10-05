@@ -46,7 +46,7 @@ namespace Backend.API.Controllers
             var result = await _channelService.Add(channelDTO);
             if(result != null)
             {
-                return Ok(result);
+                return Created("", result);
             }
             return BadRequest("Wrong provided data");
         }
@@ -58,7 +58,7 @@ namespace Backend.API.Controllers
             var result = await _channelService.Update(channelDTO, id);
             if (result)
             {
-                return Ok(result);
+                return Ok();
             }
             return BadRequest("Wrong provided info");
         }

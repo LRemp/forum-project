@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "4D/1J8vkUiE6CC6bDLcXU7yy78S5JaIqug8vDaCEEjTbcR0upFuWNpBzZjcthSyCBYeMIWQMggLV/BuKcjm2gA==",
+  "dgSpecHash": "R4KGzyCu6NTYkDwJqPMLog7xBSiDHoO00Y0QwRQ+lwFdL4Vt9OEJxxn983JRliYK9BgHpgqW3N9Zuj0pmy5ptw==",
   "success": true,
   "projectFilePath": "C:\\Users\\Lukas\\Desktop\\repos\\forum-project\\source\\Backend.Core\\Backend.Core.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Lukas\\.nuget\\packages\\fluentvalidation\\11.7.1\\fluentvalidation.11.7.1.nupkg.sha512"
+  ],
   "logs": []
 }

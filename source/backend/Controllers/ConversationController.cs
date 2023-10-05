@@ -1,6 +1,8 @@
 ﻿using Backend.Core.Contracts;
 using Backend.Core.DTOs;
 using Microsoft.AspNetCore.Mvc;
+using O9d.AspNet.FluentValidation;
+using System.ComponentModel.DataAnnotations;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -41,7 +43,7 @@ namespace Backend.API.Controllers
 
         // POST api/<ConversationController>
         [HttpPost]
-        public async Task<IActionResult> Post(CreateConversationDTO createConversationDTO, int id)
+        public async Task<IActionResult> Post([Validate]CreateConversationDTO createConversationDTO, int id)
         {
             var result = await _conversationService.Add(createConversationDTO, id);
             if(result > 0)
