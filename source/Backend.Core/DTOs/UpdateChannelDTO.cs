@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Backend.Core.DTOs
 {
-    public class CreateMessageDTO
+    public class UpdateChannelDTO
     {
-        public string Text { get; set; }
+        public string Description { get; set; }
     }
 }

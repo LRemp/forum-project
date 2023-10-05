@@ -21,7 +21,7 @@ namespace Backend.API.Controllers
         public async Task<IActionResult> Get(int channelId)
         {
             var result = await _conversationService.Get();
-            if(result != null && result.Count > 0)
+            if (result != null && result.Count > 0)
             {
                 return Ok(result);
             }
@@ -45,7 +45,7 @@ namespace Backend.API.Controllers
         public async Task<IActionResult> Post(int channelId, [Validate]CreateConversationDTO createConversationDTO)
         {
             var result = await _conversationService.Add(createConversationDTO, channelId);
-            if(result > 0)
+            if (result > 0)
             {
                 return Ok(new
                 {
@@ -57,9 +57,9 @@ namespace Backend.API.Controllers
 
         // PUT api/<ConversationController>/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> Put(int channelId, int conversationId, CreateConversationDTO createConversationDTO)
+        public async Task<IActionResult> Put(int channelId, int conversationId, [Validate]UpdateConversationDTO updateConversationDTO)
         {
-            var result = await _conversationService.Update(createConversationDTO, conversationId);
+            var result = await _conversationService.Update(updateConversationDTO, conversationId);
             if (result)
             {
                 return Ok();

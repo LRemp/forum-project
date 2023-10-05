@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace Backend.Core.Validators
 {
-    public class CreateChannelValidator: AbstractValidator<CreateChannelDTO>
+    public class UpdateMessageValidator: AbstractValidator<UpdateMessageDTO>
     {
-        public CreateChannelValidator() 
-        {
-            RuleFor(dto => dto.Name).NotNull().NotEmpty().Length(min: 2, max: 50);
+        public UpdateMessageValidator() 
+        { 
+            RuleFor(dto => dto.Text).NotEmpty().NotNull();
         }
     }
 }

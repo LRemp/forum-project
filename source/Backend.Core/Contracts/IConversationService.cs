@@ -10,10 +10,10 @@ namespace Backend.Core.Contracts
 {
     public interface IConversationService
     {
-        public Task<long> Add(CreateConversationDTO createConversationDTO, int id);
-        public Task<ConversationDTO?> Get(int id);
-        public Task<List<ConversationDTO>> Get();
-        public Task<bool> Delete(int id);
-        public Task<bool> Update(CreateConversationDTO createConversationDTO, int id);
+        public Task<long> Add(CreateConversationDTO createConversationDTO, int channelId);
+        public Task<ConversationDTO?> Get(int channelId, int conversationId);
+        public Task<List<ConversationDTO>> Get(int channelId);
+        public Task<bool> Delete(int channelId, int conversationId);
+        public Task<bool> Update(CreateConversationDTO createConversationDTO, int channelId, int conversationId);
      }
 }
