@@ -20,40 +20,59 @@ namespace Backend.Repositories.Repositories
             _mysqlConnection = mysqlConnection;
             _mysqlConnection.Open();
         }
-        public async Task<long> AddAsync(Message message)
+        public async Task<long> AddAsync(User user, Message message, int conversationId)
         {
-            var query = @"INSERT INTO messages(text, author, channel, edited)
-                            VALUES(@text, @author, @channel, @edited);
-                            SELECT LAST_INSERTED_ID()";
+            var query = @"INSERT INTO messages(text, fk_author, fk_conversation, edited)
+                            VALUES(@text, @author, @conversation, @edited);
+                            SELECT LAST_INSERT_ID()";
 
             var rowId = await _mysqlConnection.ExecuteScalarAsync<long>(query, new
             {
                 text = message.Text,
-                author = message.Author,
-                channel = message.Channel,
+                author = user.Id,
+                conversation = conversationId,
                 edited = message.Edited
             });
             return rowId;
         }
 
-        public async Task<bool> DeleteAsync(int id)
+        public async Task<bool> DeleteAsync(User user, int conversationId, int messageId)
         {
-            var query = @"DELETE FROM messages WHERE id = @id";
-            var affectedRows = await _mysqlConnection.ExecuteAsync(query, new { id });
+            var query = @"DELETE FROM messages WHERE id = @id AND fk_conversation = @conversation";
+            var affectedRows = await _mysqlConnection.ExecuteAsync(query, new { 
+                id = messageId,
+                author = user.Id,
+                conversation = conversationId
+            });
             return affectedRows > 0;
         }
 
-        public async Task<Message?> GetAsync(int id)
+        public async Task<Message?> GetAsync(int conversationId, int messageId)
         {
-            var query = @"SELECT * FROM messages WHERE id = @id";
-            var list = await _mysqlConnection.QueryAsync<Message>(query, new { id });
+            var query = @"SELECT * 
+                            FROM messages m
+                            JOIN conversations c ON m.fk_conversation = c.id
+                            WHERE m.id = @id AND fk_conversation = @conversation";
+            var list = await _mysqlConnection.QueryAsync<Message, Conversation, Message>(query, (message, conversation) => {
+                message.Conversation = conversation;
+                return message;
+            }, new { 
+                id = messageId, 
+                conversation = conversationId
+            });
             return list.FirstOrDefault();
         }
 
-        public async Task<List<Message>> GetAsync()
+        public async Task<List<Message>> GetAsync(int conversationId)
         {
-            var query = @"SELECT * FROM messages";
-            var list = await _mysqlConnection.QueryAsync<Message>(query);
+            var query = @"SELECT * 
+                            FROM messages m
+                            JOIN conversations c ON m.fk_conversation = c.id
+                            WHERE fk_conversation = @conversation";
+            var list = await _mysqlConnection.QueryAsync<Message, Conversation, Message>(query, (message, conversation) => {
+                message.Conversation = conversation;
+                return message;
+            }, new { conversation = conversationId });
             return list.ToList();
         }
 
@@ -65,16 +84,18 @@ namespace Backend.Repositories.Repositories
             return list.ToList();
         }
 
-        public async Task<bool> UpdateAsync(Message message)
+        public async Task<bool> UpdateAsync(User user, Message message, int conversationId, int messageId)
         {
             var query = @"UPDATE messages
                             SET text = @text
-                            WHERE id = @id";
+                            WHERE id = @id AND fk_author = @author AND fk_conversation = @conversation";
 
             var affectedRows = await _mysqlConnection.ExecuteAsync(query, new
             {
-                id = message.Id,
-                text = message.Text
+                id = messageId,
+                text = message.Text,
+                author = user.Id,
+                conversation = conversationId
             });
             return affectedRows > 0;
         }

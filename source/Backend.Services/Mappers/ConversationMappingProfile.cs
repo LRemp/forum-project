@@ -13,6 +13,8 @@ namespace Backend.Services.Mappers
     {
         public ConversationMappingProfile() 
         {
+            CreateMap<Conversation, UpdateConversationDTO>().ReverseMap();
+            CreateMap<Conversation, CreateConversationDTO>().ReverseMap();
             CreateMap<Conversation, ConversationDTO>().ReverseMap();
         }
     }

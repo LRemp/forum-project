@@ -5,8 +5,10 @@
         public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public int Author { get; set; }
-        public int Channel { get; set; }
+        public int FkAuthor { get; set; }
+        public User? Author { get; set; }
+        public int FkChannel { get; set; }
+        public Channel? Channel { get; set; }
         public DateTime Created { get; set; }
     }
 }

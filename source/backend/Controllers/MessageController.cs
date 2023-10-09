@@ -13,14 +13,7 @@ namespace Backend.API.Controllers
     public class MessageController : ControllerBase
     {
         private readonly IMessageService _messageService;
-        private User user = new User
-        {
-            Id = 1,
-            Username = "system",
-            Password = "password",
-            Email = "system@forum.com",
-            Avatar = "image.url"
-        };
+        private string username = "debug";
         public MessageController(IMessageService messageService)
         {
             _messageService = messageService;
@@ -28,9 +21,9 @@ namespace Backend.API.Controllers
 
         // GET: api/<MessageController>
         [HttpGet]
-        public async Task<IActionResult> Get(int channelId, int conversationId)
+        public async Task<IActionResult> Get(int conversationId)
         {
-            var messages = await _messageService.GetAll();
+            var messages = await _messageService.Get(conversationId);
             if (messages != null && messages.Count > 0)
             {
                 return Ok(messages);
@@ -42,7 +35,7 @@ namespace Backend.API.Controllers
         [HttpGet("{messageId}")]
         public async Task<IActionResult> Get(int channelId, int conversationId, int messageId)
         {
-            var message = await _messageService.Get(messageId);
+            var message = await _messageService.Get(conversationId, messageId);
             if (message != null)
             {
                 return Ok(message);
@@ -54,7 +47,7 @@ namespace Backend.API.Controllers
         [HttpPost]
         public async Task<IActionResult> Post(int channelId, int conversationId, [Validate] CreateMessageDTO createMessageDTO)
         {
-            var result = await _messageService.Add(createMessageDTO, user);
+            var result = await _messageService.Add(createMessageDTO, username, conversationId);
             if (result > 0)
             {
                 return Ok(new
@@ -69,7 +62,7 @@ namespace Backend.API.Controllers
         [HttpPut("{messageId}")]
         public async Task<IActionResult> Put(int channelId, int conversationId, int messageId, [Validate] UpdateMessageDTO updateMessageDTO)
         {
-            var result = await _messageService.Update(updateMessageDTO, messageId, user);
+            var result = await _messageService.Update(updateMessageDTO, username, conversationId, messageId);
             if (result)
             {
                 return Ok();
@@ -81,7 +74,7 @@ namespace Backend.API.Controllers
         [HttpDelete("{messageId}")]
         public async Task<IActionResult> Delete(int channelId, int conversationId, int messageId)
         {
-            var result = await _messageService.Delete(messageId);
+            var result = await _messageService.Delete(username, conversationId, messageId);
             if(result)
             {
                 return Ok();

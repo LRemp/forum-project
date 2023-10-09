@@ -58,7 +58,7 @@ namespace Backend.Repositories.Repositories
         public async Task<bool> UpdateAsync(Channel channel)
         {
             var query = @"UPDATE channels
-                            SET name = @name, description = @description
+                            SET description = @description
                             WHERE id = @id";
             
             var affectedRows = await _mysqlConnection.ExecuteAsync(query, new

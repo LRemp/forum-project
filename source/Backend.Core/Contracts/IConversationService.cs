@@ -14,6 +14,6 @@ namespace Backend.Core.Contracts
         public Task<ConversationDTO?> Get(int channelId, int conversationId);
         public Task<List<ConversationDTO>> Get(int channelId);
         public Task<bool> Delete(int channelId, int conversationId);
-        public Task<bool> Update(CreateConversationDTO createConversationDTO, int channelId, int conversationId);
+        public Task<bool> Update(UpdateConversationDTO createConversationDTO, int channelId, int conversationId);
      }
 }

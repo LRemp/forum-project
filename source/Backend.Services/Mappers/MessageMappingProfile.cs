@@ -14,6 +14,8 @@ namespace Backend.Services.Mappers
         public MessageMappingProfile()
         {
             CreateMap<Message, CreateMessageDTO>().ReverseMap();
+            CreateMap<Message, UpdateMessageDTO>().ReverseMap();
+            CreateMap<Message, MessageDTO>().ReverseMap();
         }
     }
 }

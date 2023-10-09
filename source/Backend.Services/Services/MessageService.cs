@@ -14,47 +14,51 @@ namespace Backend.Services.Services
     {
         private readonly IMapper _mapper;
         private readonly IMessageRepository _messageRepository;
+        private User user = new User
+        {
+            Id = 1,
+            Username = "system",
+            Password = "password",
+            Email = "system@forum.com",
+            Avatar = "image.url"
+        };
         public MessageService(IMessageRepository messageRepository, IMapper mapper)
         {
             _messageRepository = messageRepository;
             _mapper = mapper;
         }
 
-        public async Task<long> Add(CreateMessageDTO createMessageDTO, User user)
+        public async Task<long> Add(CreateMessageDTO createMessageDTO, string username, int conversationId)
         {
             var message = _mapper.Map<Message>(createMessageDTO);
-            message.Author = user.Id;
-            return await _messageRepository.AddAsync(message);
+            return await _messageRepository.AddAsync(user, message, conversationId);
         }
 
-        public async Task<bool> Delete(int id)
+        public async Task<bool> Delete(string username, int conversationId, int messageId)
         {
-            return await _messageRepository.DeleteAsync(id);
+            return await _messageRepository.DeleteAsync(user, conversationId, messageId);
         }
 
-        public async Task<Message> Get(int id)
+        public async Task<MessageDTO> Get(int conversationId, int messageId)
         {
-            var message = await _messageRepository.GetAsync(id);
-            return message;
+            var message = await _messageRepository.GetAsync(conversationId, messageId);
+            var messageDTO = _mapper.Map<MessageDTO>(message);
+            return messageDTO;
         }
 
-        public async Task<List<Message>> GetAll()
+        public async Task<List<MessageDTO>> Get(int conversationId)
         {
-            var messages = await _messageRepository.GetAsync();
-            return messages;
+            var messages = await _messageRepository.GetAsync(conversationId);
+            var messagesDTO = _mapper.Map<List<MessageDTO>>(messages);
+            return messagesDTO;
         }
 
-        public async Task<List<Message>> GetConversationMessages(int conversation)
+        public async Task<bool> Update(UpdateMessageDTO updateMessageDTO, string username, int conversationId, int messageId)
         {
-            var messages = await _messageRepository.GetFilteredAsync(conversation);
-            return messages;
-        }
-
-        public async Task<bool> Update(CreateMessageDTO createMessageDTO, int id, User user)
-        {
-            var message = _mapper.Map<Message>(createMessageDTO);
-            message.Id = id;
-            return await _messageRepository.UpdateAsync(message);
+            var message = _mapper.Map<Message>(updateMessageDTO);
+            message.Id = messageId;
+            message.FkConversation = conversationId;
+            return await _messageRepository.UpdateAsync(user, message, conversationId, messageId);
         }
     }
 }

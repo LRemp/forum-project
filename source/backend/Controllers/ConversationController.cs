@@ -20,7 +20,7 @@ namespace Backend.API.Controllers
         [HttpGet]
         public async Task<IActionResult> Get(int channelId)
         {
-            var result = await _conversationService.Get();
+            var result = await _conversationService.Get(channelId);
             if (result != null && result.Count > 0)
             {
                 return Ok(result);
@@ -32,7 +32,7 @@ namespace Backend.API.Controllers
         [HttpGet("{conversationId}")]
         public async Task<IActionResult> Get(int channelId, int conversationId)
         {
-            var result = await _conversationService.Get(channelId);
+            var result = await _conversationService.Get(channelId, conversationId);
             if (result != null)
             {
                 return Ok(result);
@@ -56,10 +56,10 @@ namespace Backend.API.Controllers
         }
 
         // PUT api/<ConversationController>/5
-        [HttpPut("{id}")]
+        [HttpPut("{conversationId}")]
         public async Task<IActionResult> Put(int channelId, int conversationId, [Validate]UpdateConversationDTO updateConversationDTO)
         {
-            var result = await _conversationService.Update(updateConversationDTO, conversationId);
+            var result = await _conversationService.Update(updateConversationDTO, channelId, conversationId);
             if (result)
             {
                 return Ok();
@@ -71,7 +71,7 @@ namespace Backend.API.Controllers
         [HttpDelete("{conversationId}")]
         public async Task<IActionResult> Delete(int channelId, int conversationId)
         {
-            var result = await _conversationService.Delete(conversationId);
+            var result = await _conversationService.Delete(channelId, conversationId);
             if (result)
             {
                 return Ok();

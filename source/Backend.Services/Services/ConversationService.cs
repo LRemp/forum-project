@@ -19,37 +19,35 @@ namespace Backend.Services.Services
             _conversationRepository = conversationRepository;
             _mapper = mapper;
         }
-        public async Task<long> Add(CreateConversationDTO createConversationDTO, int id)
+        public async Task<long> Add(CreateConversationDTO createConversationDTO, int channelId)
         {
             var conversation = _mapper.Map<Conversation>(createConversationDTO);
-            conversation.Channel = id;
-            return await _conversationRepository.AddAsync(conversation);
+            return await _conversationRepository.AddAsync(conversation, channelId);
         }
 
-        public async Task<bool> Delete(int id)
+        public async Task<bool> Delete(int channelId, int conversationId)
         {
-            return await _conversationRepository.DeleteAsync(id);
+            return await _conversationRepository.DeleteAsync(channelId, conversationId);
         }
 
-        public async Task<ConversationDTO?> Get(int id)
+        public async Task<ConversationDTO?> Get(int channelId, int conversationId)
         {
-            var conversation = await _conversationRepository.GetAsync(id);
+            var conversation = await _conversationRepository.GetAsync(channelId, conversationId);
             var conversationDTO = _mapper.Map<ConversationDTO>(conversation);
             return conversationDTO;
         }
 
-        public async Task<List<ConversationDTO>> Get()
+        public async Task<List<ConversationDTO>> Get(int channelId)
         {
-            var conversations = await _conversationRepository.GetAsync();
+            var conversations = await _conversationRepository.GetAsync(channelId);
             var conversationsDTO = _mapper.Map<List<ConversationDTO>>(conversations);
             return conversationsDTO;
         }
 
-        public async Task<bool> Update(CreateConversationDTO createConversationDTO, int id)
+        public async Task<bool> Update(UpdateConversationDTO updateConversationId, int channelId, int conversationId)
         {
-            var conversation = _mapper.Map<Conversation>(createConversationDTO);
-            conversation.Id = id;
-            return await _conversationRepository.UpdateAsync(conversation);
+            var conversation = _mapper.Map<Conversation>(updateConversationId);
+            return await _conversationRepository.UpdateAsync(conversation, channelId, conversationId);
         }
     }
 }

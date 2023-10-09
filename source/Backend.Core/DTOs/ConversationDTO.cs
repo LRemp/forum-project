@@ -12,6 +12,6 @@ namespace Backend.Core.DTOs
         public string Name { get; set; }
         public string Description { get; set; }
         public User Author { get; set; }
-        public Channel Channel { get; set; }
+        public ChannelDTO Channel { get; set; }
     }
 }

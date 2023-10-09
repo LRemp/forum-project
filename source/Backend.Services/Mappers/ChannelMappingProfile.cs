@@ -13,6 +13,8 @@ namespace Backend.Services.Mappers
     {
         public ChannelMappingProfile() {
 
+            CreateMap<Channel, CreateChannelDTO>().ReverseMap();
+            CreateMap<Channel, UpdateChannelDTO>().ReverseMap();
             CreateMap<Channel, ChannelDTO>().ReverseMap();
         }
     }

@@ -12,6 +12,6 @@ namespace Backend.Core.DTOs
         public string Text { get; set; }
         public DateTime Created { get; set; }
         public User Author { get; set; }
-        public Conversation Conversation { get; set; }
+        public ConversationDTO Conversation { get; set; }
     }
 }

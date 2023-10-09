@@ -8,7 +8,6 @@ namespace Backend.Core.DTOs
 {
     public class UpdateConversationDTO
     {
-        public string Name { get; set; }
         public string Description { get; set; }
     }
 }
