@@ -19,13 +19,13 @@ namespace Backend.Services.Services
             _issuer = configuration["JWT:Issuer"];
             _audience = configuration["JWT:Audience"];
         }
-        public string CreateAccessToken(string userName, string userId, IEnumerable<string> roles)
+        public string CreateAccessToken(string userName, int userId, IEnumerable<string> roles)
         {
             var authClaims = new List<Claim>()
             {
                 new(ClaimTypes.Name, userName),
                 new(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-                new(JwtRegisteredClaimNames.Sub, userId)
+                new(JwtRegisteredClaimNames.Sub, Convert.ToString(userId))
             };
 
             authClaims.AddRange(roles.Select(o => new Claim(ClaimTypes.Role, o)));
@@ -41,12 +41,12 @@ namespace Backend.Services.Services
 
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
-        public string CreateRefreshToken(string userId)
+        public string CreateRefreshToken(int userId)
         {
             var authClaims = new List<Claim>()
             {
                 new(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-                new(JwtRegisteredClaimNames.Sub, userId)
+                new(JwtRegisteredClaimNames.Sub, Convert.ToString(userId))
             };
 
             var token = new JwtSecurityToken

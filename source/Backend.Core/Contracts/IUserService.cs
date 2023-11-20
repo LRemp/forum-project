@@ -11,6 +11,7 @@ namespace Backend.Core.Contracts
     public interface IUserService
     {
         public Task<UserDTO> GetAsync(int id);
+        public Task<UserDTO> GetAsync(string username);
         public Task<UserDTO> AddAsync(RegisterDTO registerDTO); 
         public Task<bool> UpdateAsync(UpdateUserDTO user);
         public Task<bool> CheckPasswordAsync(LoginDTO loginDTO);

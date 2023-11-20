@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Backend.Core.Contracts;
+using Backend.Core.DTOs;
+using Backend.Services.Services;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Backend.API.Controllers
 {
@@ -6,14 +9,23 @@ namespace Backend.API.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-        public UserController() 
+        private readonly IUserService _userService;
+        private readonly IJwtTokenService _jwtTokenService;
+        public UserController(IUserService userService, IJwtTokenService jwtTokenService) 
         {
-
+            _userService = userService;
+            _jwtTokenService = jwtTokenService;
         }
         [HttpPost("register")]
-        public async Task<IActionResult> Register()
+        public async Task<IActionResult> Register(RegisterDTO registerDTO)
         {
-
+            var user = await _userService.GetAsync(registerDTO.Username);
+            if (user != null)
+            {
+                return BadRequest("User already exists");
+            }
+            await _userService.AddAsync(registerDTO);
+            return Ok();
         }
     }
 }

@@ -44,6 +44,13 @@ namespace Backend.Services.Services
             var user = await _userRepository.GetAsync(id);
             return _mapper.Map<UserDTO>(user);
         }
+
+        public async Task<UserDTO> GetAsync(string username)
+        {
+            var user = await _userRepository.GetByUsernameAsync(username);
+            return _mapper.Map<UserDTO>(user);
+        }
+
         public async Task<List<string>> GetUserRoles(int id)
         {
             List<string> roles = new List<string>

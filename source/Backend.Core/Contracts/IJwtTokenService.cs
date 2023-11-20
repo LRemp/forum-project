@@ -9,8 +9,8 @@ namespace Backend.Core.Contracts
 {
     public interface IJwtTokenService
     {
-        public string CreateAccessToken(string userName, string userId, IEnumerable<string> roles);
-        public string CreateRefreshToken(string userId);
+        public string CreateAccessToken(string userName, int userId, IEnumerable<string> roles);
+        public string CreateRefreshToken(int userId);
         public bool TryParseRefreshToken(string refreshToken, out ClaimsPrincipal? claims);
     }
 }
