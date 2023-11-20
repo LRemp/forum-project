@@ -10523,7 +10523,7 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\llbru\\.nuget\\packages\\": {}
+    "C:\\Users\\Lukas\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
@@ -10531,11 +10531,11 @@
       "projectUniqueName": "D:\\repos\\uni\\forum-project\\source\\backend\\Backend.API.csproj",
       "projectName": "Backend.API",
       "projectPath": "D:\\repos\\uni\\forum-project\\source\\backend\\Backend.API.csproj",
-      "packagesPath": "C:\\Users\\llbru\\.nuget\\packages\\",
+      "packagesPath": "C:\\Users\\Lukas\\.nuget\\packages\\",
       "outputPath": "D:\\repos\\uni\\forum-project\\source\\backend\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\llbru\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Lukas\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -10612,7 +10612,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.402\\RuntimeIdentifierGraph.json"
       }
     }
   }

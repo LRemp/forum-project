@@ -1,6 +1,7 @@
 ﻿using Backend.Core.Contracts;
 using Backend.Core.DTOs;
 using Microsoft.AspNetCore.Mvc;
+using MySqlConnector;
 using O9d.AspNet.FluentValidation;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -44,12 +45,24 @@ namespace Backend.API.Controllers
         [HttpPost]
         public async Task<IActionResult> Post([Validate]CreateChannelDTO createChannelDTO)
         {
-            var result = await _channelService.Add(createChannelDTO);
-            if(result != null)
+            try
             {
-                return Created("", result);
+                var result = await _channelService.Add(createChannelDTO);
+                if(result != null)
+                {
+                    return Created("", result);
+                }
+                return BadRequest("Wrong provided data");
+            } catch (MySqlException ex)
+            {
+                switch(ex.Number)
+                {
+                    case 1062:
+                        return Conflict("Duplicate entry");
+                    default:
+                        return StatusCode(500, "Internal Server Error");
+                }
             }
-            return BadRequest("Wrong provided data");
         }
 
         // PUT api/<ChannelController>/5
