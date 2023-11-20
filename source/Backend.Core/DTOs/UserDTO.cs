@@ -8,7 +8,7 @@ namespace Backend.Core.DTOs
 {
     public class UserDTO
     {
-        public string UserId;
+        public long UserId;
         public string Username;
         public string Email;
     }

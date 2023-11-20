@@ -19,6 +19,19 @@ namespace Backend.Services.Services
             _mapper = mapper;
             _userRepository = userRepository;
         }
+
+        public async Task<UserDTO> AddAsync(RegisterDTO registerDTO)
+        {
+            var user = _mapper.Map<User>(registerDTO);
+            var id = await _userRepository.AddAsync(user);
+            return new UserDTO
+            {
+                UserId = id,
+                Username = user.Username,
+                Email = user.Email,
+            };
+        }
+
         public async Task<bool> CheckPasswordAsync(LoginDTO loginDTO)
         {
             var user = await _userRepository.GetByUsernameAsync(loginDTO.Username);
