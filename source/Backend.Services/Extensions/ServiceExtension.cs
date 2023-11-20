@@ -21,6 +21,7 @@ namespace Backend.Services.Extensions
             services.AddAutoMapper(typeof(ChannelMappingProfile));
 
             services.AddTransient<IJwtTokenService, JwtTokenService>();
+            services.AddTransient<IUserService, UserService>();
             services.AddTransient<IMessageService, MessageService>();
             services.AddTransient<IConversationService, ConversationService>();
             services.AddTransient<IChannelService, ChannelService>();
