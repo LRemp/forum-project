@@ -474,3 +474,11 @@ D:\repos\uni\forum-project\source\backend\obj\Debug\net7.0\refint\Backend.API.dl
 D:\repos\uni\forum-project\source\backend\obj\Debug\net7.0\Backend.API.pdb
 D:\repos\uni\forum-project\source\backend\obj\Debug\net7.0\Backend.API.genruntimeconfig.cache
 D:\repos\uni\forum-project\source\backend\obj\Debug\net7.0\ref\Backend.API.dll
+D:\repos\uni\forum-project\source\backend\bin\Debug\net7.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\repos\uni\forum-project\source\backend\bin\Debug\net7.0\Microsoft.IdentityModel.Abstractions.dll
+D:\repos\uni\forum-project\source\backend\bin\Debug\net7.0\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\repos\uni\forum-project\source\backend\bin\Debug\net7.0\Microsoft.IdentityModel.Logging.dll
+D:\repos\uni\forum-project\source\backend\bin\Debug\net7.0\Microsoft.IdentityModel.Protocols.dll
+D:\repos\uni\forum-project\source\backend\bin\Debug\net7.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\repos\uni\forum-project\source\backend\bin\Debug\net7.0\Microsoft.IdentityModel.Tokens.dll
+D:\repos\uni\forum-project\source\backend\bin\Debug\net7.0\System.IdentityModel.Tokens.Jwt.dll

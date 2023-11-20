@@ -17,6 +17,7 @@ namespace Backend.Repositories.Extensions
         {
             services.AddTransient(_ => new MySqlConnection(configuration.GetConnectionString("mysql")));
 
+            services.AddTransient<IUserRepository, UserRepository>();
             services.AddTransient<IChannelRepository, ChannelRepository>();
             services.AddTransient<IConversationRepository, ConversationRepository>();
             services.AddTransient<IMessageRepository, MessageRepository>();
