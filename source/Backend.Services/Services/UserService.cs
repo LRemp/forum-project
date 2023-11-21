@@ -37,7 +37,6 @@ namespace Backend.Services.Services
         {
             var user = await _userRepository.GetByUsernameAsync(loginDTO.Username);
 
-
             return BCrypt.Net.BCrypt.Verify(loginDTO.Password, user.Password);
         }
         public async Task<UserDTO> GetAsync(int id)

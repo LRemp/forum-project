@@ -28,6 +28,32 @@ namespace Backend.API.Controllers
             await _userService.AddAsync(registerDTO);
             return Ok();
         }
-        
+        [HttpPost("login")]
+        public async Task<IActionResult> Login([Validate]LoginDTO loginDTO)
+        {
+            var user = await _userService.GetAsync(loginDTO.Username);
+            if (user == null)
+            {
+                return BadRequest("User not found");
+            }
+
+            bool isPasswordValid = await _userService.CheckPasswordAsync(loginDTO);
+            if(!isPasswordValid)
+            {
+                return BadRequest("Wrong password");
+            }
+
+            var userRoles = await _userService.GetUserRoles((int)user.UserId);
+            var token = _jwtTokenService.CreateAccessToken(user.Username, (int)user.UserId, userRoles);
+            var refreshToken = _jwtTokenService.CreateRefreshToken((int)user.UserId);
+
+            var successfulLoginDto = new SuccessfulLoginDTO
+            {
+                Token = token,
+                RefreshToken = refreshToken,
+                Username = user.Username,
+            };
+            return Ok(successfulLoginDto);
+        }
     }
 }
