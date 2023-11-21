@@ -31,7 +31,7 @@ builder.Services.AddAuthentication(options =>
 {
     options.TokenValidationParameters.ValidAudience = builder.Configuration["Jwt:Audience"];
     options.TokenValidationParameters.ValidIssuer = builder.Configuration["Jwt:Issuer"];
-    options.TokenValidationParameters.IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:SecretKey"]));
+    options.TokenValidationParameters.IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Secret"]));
 });
 
 builder.Services.AddAuthorization();

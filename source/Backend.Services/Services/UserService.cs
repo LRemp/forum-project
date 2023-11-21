@@ -23,6 +23,7 @@ namespace Backend.Services.Services
         public async Task<UserDTO> AddAsync(RegisterDTO registerDTO)
         {
             var user = _mapper.Map<User>(registerDTO);
+            user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password);
             var id = await _userRepository.AddAsync(user);
             return new UserDTO
             {

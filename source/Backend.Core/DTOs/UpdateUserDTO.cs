@@ -8,8 +8,8 @@ namespace Backend.Core.DTOs
 {
     public class UpdateUserDTO
     {
-        public long Id;
-        public string? Username;
-        public string Password;
+        public long Id { get; set; }
+        public string? Username { get; set; }
+        public string Password { get; set; }
     }
 }

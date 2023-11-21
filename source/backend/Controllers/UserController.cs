@@ -2,6 +2,7 @@
 using Backend.Core.DTOs;
 using Backend.Services.Services;
 using Microsoft.AspNetCore.Mvc;
+using O9d.AspNet.FluentValidation;
 
 namespace Backend.API.Controllers
 {
@@ -17,7 +18,7 @@ namespace Backend.API.Controllers
             _jwtTokenService = jwtTokenService;
         }
         [HttpPost("register")]
-        public async Task<IActionResult> Register(RegisterDTO registerDTO)
+        public async Task<IActionResult> Register([Validate]RegisterDTO registerDTO)
         {
             var user = await _userService.GetAsync(registerDTO.Username);
             if (user != null)
@@ -27,5 +28,6 @@ namespace Backend.API.Controllers
             await _userService.AddAsync(registerDTO);
             return Ok();
         }
+        
     }
 }

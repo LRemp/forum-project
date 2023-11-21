@@ -8,8 +8,8 @@ namespace Backend.Core.DTOs
 {
     public class UserDTO
     {
-        public long UserId;
-        public string Username;
-        public string Email;
+        public long UserId { get; set; }
+        public string Username { get; set; }
+        public string Email { get; set; }
     }
 }
