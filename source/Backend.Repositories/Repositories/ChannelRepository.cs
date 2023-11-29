@@ -20,18 +20,57 @@ namespace Backend.Repositories.Repositories
             _mysqlConnection.Open();
         }
 
-        public async Task<long> AddAsync(Channel channel)
+        public async Task<int> AddAsync(Channel channel, int userId)
         {
-            var query = @"INSERT INTO channels(name, description)
-                            VALUES(@name, @description);
+            
+
+            var result = await _mysqlConnection.QueryAsync<Channel>(@"SELECT * FROM channels WHERE name = @name LIMIT 1", new { name = channel.Name });
+            var dbChannel = result.FirstOrDefault();
+
+            if(dbChannel != null)
+            {
+                //throw an exception
+                throw new Exception();
+            }
+
+            var query = @"INSERT INTO channelrequests(fk_user, name, description)
+                            VALUES(@author, @name, @description);
                             SELECT LAST_INSERT_ID();";
 
-            var rowId = await _mysqlConnection.ExecuteScalarAsync<long>(query, new
+            var id = await _mysqlConnection.ExecuteScalarAsync<long>(query, new
             {
+                author = userId,
                 name = channel.Name,
                 description = channel.Description
             });
-            return rowId;
+
+            return (int)id;
+        }
+
+        public async Task<int> ApproveRequestAsync(int id)
+        {
+            var requestQuery = @"SELECT * FROM channelrequests WHERE id = @id LIMIT 1";
+            var requestResult = await _mysqlConnection.QueryAsync<ChannelRequest>(requestQuery, new { id });
+            var request = requestResult.FirstOrDefault();
+
+            if(request == null)
+            {
+                // TODO: correct the exception
+                throw new Exception();
+            }
+            
+            var query = @"INSERT INTO channels(name, description)
+                            VALUES(@name, @description);
+                            SELECT LAST_INSERT_ID();";
+            var resultId = await _mysqlConnection.ExecuteScalarAsync<long>(query, new
+            {
+                name = request.Name,
+                description = request.Description
+            });
+
+            await _mysqlConnection.QueryAsync(@"DELETE FROM channelrequests WHERE id = @id", new { id });
+
+            return (int)resultId;
         }
 
         public async Task<bool> DeleteAsync(int id)
@@ -52,6 +91,13 @@ namespace Backend.Repositories.Repositories
         {
             var query = @"SELECT * FROM channels";
             var result = await _mysqlConnection.QueryAsync<Channel>(query);
+            return result.ToList();
+        }
+
+        public async Task<List<ChannelRequestDTO>> GetRequests()
+        {
+            var query = @"SELECT * FROM channelrequests";
+            var result = await _mysqlConnection.QueryAsync<ChannelRequestDTO>(query);
             return result.ToList();
         }
 

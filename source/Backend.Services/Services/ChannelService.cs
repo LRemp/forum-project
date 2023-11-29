@@ -15,11 +15,16 @@ namespace Backend.Services.Services
             _channelRepository = channelRepository;
         }
 
-        public async Task<long> Add(CreateChannelDTO createChannelDTO)
+        public async Task<int> Add(CreateChannelDTO createChannelDTO, int userId)
         {
             var channel = _mapper.Map<Channel>(createChannelDTO);
-            var result = await _channelRepository.AddAsync(channel);
+            var result = await _channelRepository.AddAsync(channel, userId);
             return result;
+        }
+
+        public async Task<int> ApproveRequest(int requestId)
+        {
+            return await _channelRepository.ApproveRequestAsync(requestId);
         }
 
         public async Task<bool> Delete(int channelId)
@@ -38,6 +43,12 @@ namespace Backend.Services.Services
             var result = await _channelRepository.GetAsync();
             var channels = _mapper.Map<List<ChannelDTO>>(result);
             return channels;
+        }
+
+        public async Task<List<ChannelRequestDTO>> GetRequests()
+        {
+            var result = await _channelRepository.GetRequests();
+            return result;
         }
 
         public async Task<bool> Update(UpdateChannelDTO updateChannelDTO, int channelId)

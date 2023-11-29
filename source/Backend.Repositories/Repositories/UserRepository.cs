@@ -49,6 +49,13 @@ namespace Backend.Repositories.Repositories
             return result.FirstOrDefault();
         }
 
+        public async Task<bool> IsAdminAsync(int id)
+        {
+            var query = @"SELECT * FROM admins WHERE fk_user = @id";
+            var result = await _mysqlConnection.QueryAsync<User>(query, new { id });
+            return result.FirstOrDefault() != null;
+        }
+
         public async Task<bool> UpdateAsync(User user)
         {
             var query = @"UPDATE users

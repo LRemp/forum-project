@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Backend.Core.DTOs
 {
-    public class UserDTO
+    public class ChannelRequestDTO
     {
-        public long Id { get; set; }
-        public string Username { get; set; }
-        public string Email { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
     }
 }

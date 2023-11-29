@@ -20,7 +20,7 @@ namespace Backend.Repositories.Repositories
             _mysqlConnection = mysqlConnection;
             _mysqlConnection.Open();
         }
-        public async Task<long> AddAsync(User user, Message message, int conversationId)
+        public async Task<long> AddAsync(Message message, int conversationId)
         {
             var query = @"INSERT INTO messages(text, fk_author, fk_conversation, edited)
                             VALUES(@text, @author, @conversation, @edited);
@@ -29,19 +29,19 @@ namespace Backend.Repositories.Repositories
             var rowId = await _mysqlConnection.ExecuteScalarAsync<long>(query, new
             {
                 text = message.Text,
-                author = user.Id,
+                author = message.FkAuthor,
                 conversation = conversationId,
                 edited = message.Edited
             });
             return rowId;
         }
 
-        public async Task<bool> DeleteAsync(User user, int conversationId, int messageId)
+        public async Task<bool> DeleteAsync(int userId, int conversationId, int messageId)
         {
             var query = @"DELETE FROM messages WHERE id = @id AND fk_conversation = @conversation";
             var affectedRows = await _mysqlConnection.ExecuteAsync(query, new { 
                 id = messageId,
-                author = user.Id,
+                author = userId,
                 conversation = conversationId
             });
             return affectedRows > 0;
@@ -76,6 +76,13 @@ namespace Backend.Repositories.Repositories
             return list.ToList();
         }
 
+        public async Task<int> GetAuthorAsync(int id)
+        {
+            var query = @"SELECT fk_author FROM messages WHERE id = @id";
+            var result = await _mysqlConnection.QueryAsync<int>(query, new { id });
+            return result.FirstOrDefault();
+        }
+
         public async Task<List<Message>> GetFilteredAsync(int id)
         {
             var query = @"SELECT * FROM messages
@@ -84,7 +91,7 @@ namespace Backend.Repositories.Repositories
             return list.ToList();
         }
 
-        public async Task<bool> UpdateAsync(User user, Message message, int conversationId, int messageId)
+        public async Task<bool> UpdateAsync(int userId, Message message, int conversationId, int messageId)
         {
             var query = @"UPDATE messages
                             SET text = @text
@@ -94,7 +101,7 @@ namespace Backend.Repositories.Repositories
             {
                 id = messageId,
                 text = message.Text,
-                author = user.Id,
+                author = userId,
                 conversation = conversationId
             });
             return affectedRows > 0;

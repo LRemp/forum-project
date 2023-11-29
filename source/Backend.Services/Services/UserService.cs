@@ -27,7 +27,7 @@ namespace Backend.Services.Services
             var id = await _userRepository.AddAsync(user);
             return new UserDTO
             {
-                UserId = id,
+                Id = id,
                 Username = user.Username,
                 Email = user.Email,
             };
@@ -57,6 +57,11 @@ namespace Backend.Services.Services
             {
                 "User"
             };
+            var isAdmin = await _userRepository.IsAdminAsync(id);
+            if (isAdmin)
+            {
+                roles.Add("Administrator");
+            }
             return roles;
         }
         public async Task<bool> UpdateAsync(UpdateUserDTO user)

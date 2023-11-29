@@ -19,9 +19,10 @@ namespace Backend.Services.Services
             _conversationRepository = conversationRepository;
             _mapper = mapper;
         }
-        public async Task<long> Add(CreateConversationDTO createConversationDTO, int channelId)
+        public async Task<long> Add(CreateConversationDTO createConversationDTO, int channelId, int userId)
         {
             var conversation = _mapper.Map<Conversation>(createConversationDTO);
+            conversation.FkAuthor = userId;
             return await _conversationRepository.AddAsync(conversation, channelId);
         }
 

@@ -13,5 +13,6 @@ namespace Backend.Core.Contracts
         public Task<User?> GetAsync(int id);
         public Task<User?> GetByUsernameAsync(string username);
         public Task<bool> UpdateAsync(User user);
+        public Task<bool> IsAdminAsync(int id);
     }
 }
