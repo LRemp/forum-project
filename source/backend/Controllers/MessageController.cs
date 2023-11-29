@@ -1,25 +1,30 @@
 ﻿using Backend.Core.Contracts;
 using Backend.Core.DTOs;
 using Backend.Core.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using O9d.AspNet.FluentValidation;
+using System.Security.Claims;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace Backend.API.Controllers
 {
+    [Authorize]
     [Route("api/channels/{channelId}/conversations/{conversationId}/messages")]
     [ApiController]
     public class MessageController : ControllerBase
     {
         private readonly IMessageService _messageService;
-        private string username = "debug";
-        public MessageController(IMessageService messageService)
+        private readonly IUserService _userService;
+        public MessageController(IMessageService messageService, IUserService userService)
         {
             _messageService = messageService;
+            _userService = userService;
         }
 
         // GET: api/<MessageController>
+        [AllowAnonymous]
         [HttpGet]
         public async Task<IActionResult> Get(int conversationId)
         {
@@ -32,6 +37,7 @@ namespace Backend.API.Controllers
         }
 
         // GET api/<MessageController>/5
+        [AllowAnonymous]
         [HttpGet("{messageId}")]
         public async Task<IActionResult> Get(int channelId, int conversationId, int messageId)
         {
@@ -47,13 +53,12 @@ namespace Backend.API.Controllers
         [HttpPost]
         public async Task<IActionResult> Post(int channelId, int conversationId, [Validate] CreateMessageDTO createMessageDTO)
         {
-            var result = await _messageService.Add(createMessageDTO, username, conversationId);
+            var username = HttpContext.User.FindFirst(ClaimTypes.Name)?.Value;
+            var user = await _userService.GetAsync(username);
+            var result = await _messageService.Add(createMessageDTO, (int)user.Id, conversationId);
             if (result > 0)
             {
-                return Ok(new
-                {
-                    id = result
-                });
+                return Created("", result);
             }
             return BadRequest("Wrong provided data");
         }
@@ -62,7 +67,17 @@ namespace Backend.API.Controllers
         [HttpPut("{messageId}")]
         public async Task<IActionResult> Put(int channelId, int conversationId, int messageId, [Validate] UpdateMessageDTO updateMessageDTO)
         {
-            var result = await _messageService.Update(updateMessageDTO, username, conversationId, messageId);
+            var username = HttpContext.User.FindFirst(ClaimTypes.Name)?.Value;
+            var roles = HttpContext.User.FindAll(ClaimTypes.Role);
+            var user = await _userService.GetAsync(username);
+            var messageAuthor = await _messageService.GetAuthor(messageId);
+
+            if (user.Id != messageAuthor)
+            {
+                return BadRequest("Not an author of the resource");
+            }
+
+            var result = await _messageService.Update(updateMessageDTO, (int)user.Id, conversationId, messageId);
             if (result)
             {
                 return Ok();
@@ -74,10 +89,21 @@ namespace Backend.API.Controllers
         [HttpDelete("{messageId}")]
         public async Task<IActionResult> Delete(int channelId, int conversationId, int messageId)
         {
-            var result = await _messageService.Delete(username, conversationId, messageId);
+            var username = HttpContext.User.FindFirst(ClaimTypes.Name)?.Value;
+            var roles = HttpContext.User.FindAll(ClaimTypes.Role);
+            var user = await _userService.GetAsync(username);
+            var messageAuthor = await _messageService.GetAuthor(messageId);
+            //var isAdmin = roles.Select(role => role.Value == "Administrator");
+
+            if (user.Id != messageAuthor)
+            {
+                return BadRequest("Not an author of the resource");
+            }
+
+            var result = await _messageService.Delete((int)user.Id, conversationId, messageId);
             if(result)
             {
-                return Ok();
+                return NoContent();
             }
             return BadRequest("Wrong provided id");
         }

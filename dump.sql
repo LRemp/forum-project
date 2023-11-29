@@ -19,6 +19,32 @@
 CREATE DATABASE IF NOT EXISTS `chathub` /*!40100 DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci */;
 USE `chathub`;
 
+-- Dumping structure for table chathub.admins
+CREATE TABLE IF NOT EXISTS `admins` (
+  `id` int(11) NOT NULL,
+  `fk_user` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `fk_user` (`fk_user`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+-- Dumping data for table chathub.admins: ~0 rows (approximately)
+DELETE FROM `admins`;
+INSERT INTO `admins` (`id`, `fk_user`) VALUES
+	(1, 3);
+
+-- Dumping structure for table chathub.channelrequests
+CREATE TABLE IF NOT EXISTS `channelrequests` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `fk_user` int(11) DEFAULT NULL,
+  `name` varchar(50) DEFAULT NULL,
+  `description` text DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name` (`name`)
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+-- Dumping data for table chathub.channelrequests: ~1 rows (approximately)
+DELETE FROM `channelrequests`;
+
 -- Dumping structure for table chathub.channels
 CREATE TABLE IF NOT EXISTS `channels` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -26,14 +52,10 @@ CREATE TABLE IF NOT EXISTS `channels` (
   `description` text DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `name` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=57 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
--- Dumping data for table chathub.channels: ~3 rows (approximately)
+-- Dumping data for table chathub.channels: ~1 rows (approximately)
 DELETE FROM `channels`;
-INSERT INTO `channels` (`id`, `name`, `description`) VALUES
-	(25, NULL, 'new desc'),
-	(26, 'string', 'brand new dedsc'),
-	(30, 'Automotive', 'Thread to disccuss all about car culture');
 
 -- Dumping structure for table chathub.conversations
 CREATE TABLE IF NOT EXISTS `conversations` (
@@ -42,17 +64,13 @@ CREATE TABLE IF NOT EXISTS `conversations` (
   `description` text DEFAULT NULL,
   `fk_author` int(11) NOT NULL,
   `fk_channel` int(11) NOT NULL,
-  `created` datetime DEFAULT NULL,
+  `created` datetime DEFAULT current_timestamp(),
   PRIMARY KEY (`id`),
   UNIQUE KEY `name` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
--- Dumping data for table chathub.conversations: ~2 rows (approximately)
+-- Dumping data for table chathub.conversations: ~0 rows (approximately)
 DELETE FROM `conversations`;
-INSERT INTO `conversations` (`id`, `name`, `description`, `fk_author`, `fk_channel`, `created`) VALUES
-	(1, 'new convo', 'test', 0, 26, NULL),
-	(2, 'BMW', 'All about BMWs', 0, 30, NULL),
-	(4, 'Audi', 'All about Audi\'s', 0, 30, NULL);
 
 -- Dumping structure for table chathub.messages
 CREATE TABLE IF NOT EXISTS `messages` (
@@ -63,25 +81,28 @@ CREATE TABLE IF NOT EXISTS `messages` (
   `created` datetime DEFAULT current_timestamp(),
   `edited` tinyint(4) DEFAULT 0,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
--- Dumping data for table chathub.messages: ~6 rows (approximately)
+-- Dumping data for table chathub.messages: ~0 rows (approximately)
 DELETE FROM `messages`;
-INSERT INTO `messages` (`id`, `text`, `fk_author`, `fk_conversation`, `created`, `edited`) VALUES
-	(4, 'Hi there', 1, 0, NULL, 0),
-	(5, 'Hi there', 1, 0, NULL, 0),
-	(6, 'Hi there', 1, 0, '2023-10-09 12:03:39', 0),
-	(7, 'Hi there', 1, 2, '2023-10-09 12:05:50', 0),
-	(8, 'This is an updated message', 1, 2, '2023-10-09 12:11:39', 0);
 
--- Dumping structure for table chathub.user
-CREATE TABLE IF NOT EXISTS `user` (
+-- Dumping structure for table chathub.users
+CREATE TABLE IF NOT EXISTS `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+  `username` varchar(50) NOT NULL,
+  `password` text NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `forceRelogin` tinyint(1) DEFAULT 0,
+  `deactivated` tinyint(1) DEFAULT 0,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `username` (`username`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
--- Dumping data for table chathub.user: ~0 rows (approximately)
-DELETE FROM `user`;
+-- Dumping data for table chathub.users: ~2 rows (approximately)
+DELETE FROM `users`;
+INSERT INTO `users` (`id`, `username`, `password`, `email`, `forceRelogin`, `deactivated`) VALUES
+	(2, 'test', '$2a$11$vwVRKl4sLQa.cSuj4Ya7IOCdyLKmKAjXjhNd6POPiEs8wWqZj4G2u', 'test@test.com', 0, 0),
+	(3, 'postman_user', '$2a$11$ko.zPTmEU7lyw6x0VOVFrutPcdy0ZfD.bPjaGmtsi81arSiyAxf.u', 'postman@forum.test', 0, 0);
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

@@ -3,6 +3,7 @@ using Backend.Core.DTOs;
 using Backend.Services.Services;
 using Microsoft.AspNetCore.Mvc;
 using O9d.AspNet.FluentValidation;
+using System.Security.Claims;
 
 namespace Backend.API.Controllers
 {
@@ -43,9 +44,9 @@ namespace Backend.API.Controllers
                 return BadRequest("Wrong password");
             }
 
-            var userRoles = await _userService.GetUserRoles((int)user.UserId);
-            var token = _jwtTokenService.CreateAccessToken(user.Username, (int)user.UserId, userRoles);
-            var refreshToken = _jwtTokenService.CreateRefreshToken((int)user.UserId);
+            var userRoles = await _userService.GetUserRoles((int)user.Id);
+            var token = _jwtTokenService.CreateAccessToken(user.Username, (int)user.Id, userRoles);
+            var refreshToken = _jwtTokenService.CreateRefreshToken((int)user.Id);
 
             var successfulLoginDto = new SuccessfulLoginDTO
             {
@@ -54,6 +55,17 @@ namespace Backend.API.Controllers
                 Username = user.Username,
             };
             return Ok(successfulLoginDto);
+        }
+        [HttpPost("delete")]
+        public async Task<IActionResult> Delete()
+        {
+            var username = HttpContext.User.FindFirst(ClaimTypes.Name)?.Value;
+            var user = await _userService.GetAsync(username);
+            if(user == null)
+            {
+                return BadRequest("Invalid operation");
+            }
+            return Ok("User deactivated");
         }
     }
 }

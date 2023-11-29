@@ -1,0 +1,27 @@
+version: '3.4'
+
+services:
+  backend.api:
+    image: ${DOCKER_REGISTRY-}backendapi
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    depends_on:
+      - mariadb
+    ports:
+      - "28000:443"
+    environment:
+      - ConnectionStrings__DefaultConnection=Server=mariadb;Database=chathub;User=root;Password=example;
+
+  mariadb:
+    image: mariadb:10.4
+    restart: always
+    environment:
+      MARIADB_ROOT_PASSWORD: example
+    ports:
+      - "4000:3306"
+    volumes:
+      - "database:/var/lib/mysql"
+
+volumes:
+  database:
