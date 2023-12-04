@@ -12,7 +12,6 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
       authName={'_auth'}
       cookieDomain={window.location.hostname}
       cookieSecure={window.location.protocol === "https:"}>
-
       <Root />
     </AuthProvider>
   </React.StrictMode>,

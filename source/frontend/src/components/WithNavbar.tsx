@@ -5,7 +5,9 @@ function WithNavbar({ children } : { children: React.ReactNode }) {
   return (
     <div>
         <Navbar />
-        {children}
+        <div className='max-w-screen-xl m-auto'>
+            {children}
+        </div>
     </div>
   )
 }

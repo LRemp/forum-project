@@ -1,14 +1,15 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import WithNavbar from '../components/WithNavbar'
+import { Box, Container, Grid, Heading, Section, Text } from '@radix-ui/themes'
+import ChannelCard from '../components/ChannelCard'
 
 function Home() {
-  const [channels, setChannels] = useState([])
+  const [channels, setChannels] = useState<Array<Channel>>([])
   const fetchChannels = () => {
     axios.get('/api/channels')
-      .then((res: any) => {
-        console.log(res)
-        setChannels(res.data)
+      .then(({ data } : { data: Array<Channel> | null }) => {
+        data && setChannels(data)
       })
   }
 
@@ -18,10 +19,22 @@ function Home() {
     
   return (
     <WithNavbar>
-      <div>
-        Channels:
+      <Container>
+        <Section>
+          <Heading size="8">Hey, user!</Heading>
+        </Section>
 
-      </div>
+        <Heading color="cyan" size="4">Explore these channels:</Heading>
+        <hr />
+        <br />
+        <Grid columns="3" gap="4" width="auto">
+          {channels.map((channel: Channel, index: number) => (
+            <Box>
+              <ChannelCard {...channel} key={index} />
+            </Box>
+          ))}
+        </Grid>
+      </Container>
     </WithNavbar>
   )
 }
