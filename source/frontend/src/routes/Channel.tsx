@@ -4,12 +4,19 @@ import WithNavbar from '../components/WithNavbar'
 import { Box, Container, Grid, Heading } from '@radix-ui/themes'
 import BackButton from '../components/BackButton'
 import axios from 'axios'
+import ConversationCard from '../components/ConversationCard'
 
 function Channel() {
   const { channelId } = useParams()
-  const [conversations, setConversations] = useState<Array<Conversation>>([])
+  const [conversations, setConversations] = useState<Array<Conversation>>([
+    {
+      "id": 1,
+      "name": "Postman testing",
+      "description": "Running postman tests",
+    }
+  ])
   const fetchConversations = () => {
-    axios.get('/api/channels')
+    axios.get(`/api/channels/${channelId}/conversations`)
       .then(({ data } : { data: Array<Conversation> | null }) => {
         data && setConversations(data)
       })
@@ -31,7 +38,7 @@ function Channel() {
         <Grid columns="3" gap="4" width="auto">
           {conversations.map((channel: Channel, index: number) => (
             <Box>
-              <ConversationCard {...channel} key={index} />
+              <ConversationCard {...channel} channelId={channelId} key={index} />
             </Box>
           ))}
         </Grid>
