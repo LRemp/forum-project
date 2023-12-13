@@ -4,6 +4,7 @@ import WithNavbar from '../components/WithNavbar'
 import { Box, Container, Grid, Heading, Section, Text } from '@radix-ui/themes'
 import ChannelCard from '../components/ChannelCard'
 import { useIsAuthenticated } from 'react-auth-kit'
+import RequestDialog from '../components/RequestDialog'
 
 function Home() {
   const isAuthenticated = useIsAuthenticated()
@@ -21,6 +22,10 @@ function Home() {
       })
   }
 
+  const openCreateModal = () => {
+
+  }
+
   useEffect(() => {
     fetchChannels()
   }, [])
@@ -29,8 +34,11 @@ function Home() {
     <WithNavbar>
       <Container>
         <Section>
+          <RequestDialog />
           <Heading size="8">{isAuthenticated() ? (<>Hey, user!</>) : (<>Welcome to chathub!</>)}</Heading>
         </Section>
+
+        
 
         <Heading color="cyan" size="4">Explore these channels:</Heading>
         <hr />

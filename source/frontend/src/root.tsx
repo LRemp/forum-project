@@ -5,6 +5,7 @@ import Login from './routes/Login';
 import Register from './routes/Register';
 import Channel from './routes/Channel';
 import Conversation from './routes/Conversation';
+import { Toaster } from 'react-hot-toast';
 
 const router = createBrowserRouter([
   {
@@ -32,6 +33,7 @@ const router = createBrowserRouter([
 export default function () {
   return (
     <Theme className=''>
+      <Toaster />
       <RouterProvider router={router} />
     </Theme>
   );

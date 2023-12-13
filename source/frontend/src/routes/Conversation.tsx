@@ -48,6 +48,7 @@ function Conversation({}) {
 
   const sendMessage = (e: any) => {
     e.preventDefault()
+    if(!inputValue || inputValue == "") return
     console.log(inputValue)
     setInputValue("")
     
@@ -73,12 +74,19 @@ function Conversation({}) {
         </ScrollArea>
         <form onSubmit={sendMessage}>
           {isAuthenticated() ? (
-            <div className='w-100 p-3 bg-gunmetal'>
-              <input className='w-100' value={inputValue} onChange={updateInput} placeholder="Enter the message..." ></input>
-              <button className='bg-coral text-white p-2 rounded-sm drop-shadow-md'>
-
-                <PaperPlaneIcon width="18" height="18" />
-              </button>
+            <div>
+              <div className="relative mt-2">
+                <button className='bg-coral flex text-white w-8 h-8 rounded-sm drop-shadow-md absolute right-3 inset-y-0 my-auto'>
+                  <PaperPlaneIcon width="18" height="18" className='m-auto' />
+                </button>
+                  <input
+                    type={"text"}
+                    value={inputValue}
+                    onChange={updateInput}
+                    placeholder="Enter your message..."
+                    className="w-full p-3 text-white bg-paynesgray outline-none border focus:border-coral shadow-sm rounded-lg"
+                  />
+              </div>
             {/*  <TextField.Root className='p-2'>
                 <TextField.Input value={inputValue} onChange={updateInput} placeholder="Enter the message..." />
                 <TextField.Slot>

@@ -82,7 +82,7 @@ export default () => {
                 <div className="flex-1 flex items-center justify-end">
                     {isAuthenticated() ? (
                         <>
-                            <button onClick={() => signOut()} className="py-1 px-3 text-sm rounded-md drop-shadow-md bg-gunmetal font-medium">
+                            <button onClick={() => signOut()} className="py-1 px-3 text-sm rounded-sm drop-shadow-md bg-gunmetal font-medium">
                                 Log out
                             </button>
                             <Text className="mx-2" weight={"medium"}>{auth().username}</Text>
@@ -93,12 +93,12 @@ export default () => {
                     ) : (
                         <Flex gap={"2"}>
                             <Link to={`/login`}>
-                                <button className="py-1 px-3 text-sm rounded-md drop-shadow-md bg-silver text-black font-medium">
+                                <button className="py-1 px-3 text-sm rounded-sm drop-shadow-md bg-silver text-black font-medium">
                                     Log in
                                 </button>
                             </Link>
                             <Link to={`/register`}>
-                                <button className="py-1 px-3 text-sm rounded-md drop-shadow-md bg-gunmetal font-medium">
+                                <button className="py-1 px-3 text-sm rounded-sm drop-shadow-md bg-gunmetal font-medium">
                                     Sign up
                                 </button>
                             </Link>
