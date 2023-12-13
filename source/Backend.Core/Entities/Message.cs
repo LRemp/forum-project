@@ -5,6 +5,7 @@
         public int Id { get; set; }
         public string Text { get; set; }
         public int FkAuthor { get; set; }
+        public User? Author {  get; set; }
         public int FkConversation { get; set; }
         public Conversation? Conversation { get; set; }
         public DateTime Created { get; set; }

@@ -15,7 +15,7 @@ function ChannelCard({ id, name, description }: IChannelCard) {
   }
     
   return (
-    <div className='drop-shadow-md bg-paynesgray text-white rounded-md p-5 hover:bg-gray-800 transition cursor-pointer' onClick={openChannel}>
+    <div className='drop-shadow-md bg-paynesgray text-white rounded-sm p-5 hover:bg-gray-800 transition cursor-pointer' onClick={openChannel}>
       <Heading size="5">{name}</Heading>
       <Text>{description}</Text>
     </div>

@@ -9,21 +9,14 @@ import RequestDialog from '../components/RequestDialog'
 function Home() {
   const isAuthenticated = useIsAuthenticated()
   const [channels, setChannels] = useState<Array<Channel>>([
-    {
-      "id": 1,
-      "name": "New request",
-      "description": "This is a channel to test it out"
-    }
+
   ])
   const fetchChannels = () => {
     axios.get('/api/channels')
       .then(({ data } : { data: Array<Channel> | null }) => {
+        console.log(data)
         data && setChannels(data)
       })
-  }
-
-  const openCreateModal = () => {
-
   }
 
   useEffect(() => {
@@ -34,7 +27,7 @@ function Home() {
     <WithNavbar>
       <Container>
         <Section>
-          <RequestDialog />
+          {isAuthenticated() && <RequestDialog />}
           <Heading size="8">{isAuthenticated() ? (<>Hey, user!</>) : (<>Welcome to chathub!</>)}</Heading>
         </Section>
 

@@ -51,7 +51,7 @@ namespace Backend.API.Controllers
 
         // POST api/<MessageController>
         [HttpPost]
-        public async Task<IActionResult> Post(int channelId, int conversationId, [Validate] CreateMessageDTO createMessageDTO)
+        public async Task<IActionResult> Post(int channelId, int conversationId, [Validate] CreateMessageDTO  createMessageDTO)
         {
             var username = HttpContext.User.FindFirst(ClaimTypes.Name)?.Value;
             var user = await _userService.GetAsync(username);

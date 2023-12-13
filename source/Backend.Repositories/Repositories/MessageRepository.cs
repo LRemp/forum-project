@@ -65,12 +65,19 @@ namespace Backend.Repositories.Repositories
 
         public async Task<List<Message>> GetAsync(int conversationId)
         {
-            var query = @"SELECT * 
+            /*var query = @"SELECT * 
                             FROM messages m
                             JOIN conversations c ON m.fk_conversation = c.id
-                            WHERE fk_conversation = @conversation";
-            var list = await _mysqlConnection.QueryAsync<Message, Conversation, Message>(query, (message, conversation) => {
+                            WHERE fk_conversation = @conversation";*/
+            var query = @"SELECT m.*, c.*, u.*
+                            FROM messages m
+                            JOIN conversations c ON m.fk_conversation = c.id
+                            JOIN users u ON m.fk_author = u.id
+                            WHERE fk_conversation = @conversation;";
+            var list = await _mysqlConnection.QueryAsync<Message, Conversation, User, Message>(query, (message, conversation, user) => {
                 message.Conversation = conversation;
+                user.Password = "";
+                message.Author = user;
                 return message;
             }, new { conversation = conversationId });
             return list.ToList();

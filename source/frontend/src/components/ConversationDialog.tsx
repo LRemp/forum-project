@@ -4,20 +4,21 @@ import axios from 'axios';
 import { useAuthHeader } from 'react-auth-kit';
 import toast from 'react-hot-toast';
 
-export default () => {
+export default ({ channelId, update } : { channelId: number, update: Function }) => {
     const [formData, setFormData] = useState({ name: "", description: "" })
     const authHeader = useAuthHeader()
 
     const submitRequest = () => {
-        axios.post('/api/channels/', formData, {
+        axios.post(`/api/channels/${channelId}/conversations`, formData, {
             headers: { "Authorization" : authHeader() },
         }).then((res: any) => {
             if(res.status == 201) {
-                toast.success("Your request was successfuly created!")
+                toast.success("Channel created successfuly!")
+                update()
             }
         }).catch((err) => {
             if(err.response.status) {
-                toast.error("Please log in to create channel creation requests")
+                toast.error("Something went wrong")
             }
         })
     }
@@ -25,8 +26,8 @@ export default () => {
   return (
     <Dialog.Root className="fixed inset-0 z-10 overflow-y-auto">
         <div className='flex flex-row-reverse'>
-            <Dialog.Trigger className="py-1 px-3 text-lg rounded-sm drop-shadow-md bg-gunmetal font-medium text-white right-0">
-                Create request
+            <Dialog.Trigger className="py-1 px-3 my-2 text-lg rounded-sm drop-shadow-md bg-gunmetal font-medium text-white right-0">
+                Create conversation
             </Dialog.Trigger>
         </div>
       <Dialog.Portal>
@@ -51,29 +52,29 @@ export default () => {
             </div>
             <div className="max-w-sm mx-auto space-y-3 text-center ">
               <Dialog.Title className="text-lg font-medium text-gray-800 ">
-                Create channel creation request
+                Create conversation
               </Dialog.Title>
 
               <Dialog.Description className=" text-sm text-gray-600">
                 <p>
-                  This request will be review by the administrators of chathub, uppon successful approval your request will be proccessed
+                  A conversation will be created immediately after submiting
                 </p>
               </Dialog.Description>
               <fieldset className="Fieldset relative">
                 <input
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                   className="w-full pl-3 pr-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-gunmetal shadow-sm rounded-sm"
-                  placeholder="Enter channel name"
+                  placeholder="Enter conversation name"
                 />
                 <input
                 onChange={(e) => setFormData({ ...formData, description: e.target.value })}
                   className="w-full pl-3 pr-3 py-2 my-2 text-gray-500 bg-transparent outline-none border focus:border-gunmetal shadow-sm rounded-sm"
-                  placeholder="Enter channel short description"
+                  placeholder="Enter conversation short description"
                 />
               </fieldset>
               <Dialog.Close asChild>
                 <button onClick={submitRequest} className=" w-full mt-3 py-3 px-4 font-medium text-sm text-center text-white bg-paynesgray hover:bg-gunmetal active:bg-coral rounded-sm ring-offset-2 ring-coral focus:ring-2">
-                  Create request
+                  Create conversation
                 </button>
               </Dialog.Close>
             </div>

@@ -6,11 +6,16 @@ import Register from './routes/Register';
 import Channel from './routes/Channel';
 import Conversation from './routes/Conversation';
 import { Toaster } from 'react-hot-toast';
+import Admin from './routes/Admin';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Home />,
+  },
+  {
+    path: "/admin",
+    element: <Admin />,
   },
   {
     path: "/login",

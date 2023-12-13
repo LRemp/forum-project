@@ -15,31 +15,33 @@ function Conversation({}) {
   const ref = useRef()
   const [inputValue, setInputValue] = useState<string | undefined>(undefined)
   const { channelId, conversationId } = useParams()
-  const [messages, setMessages] = useState<Array<Message>>([
-    {
-      "id": 1,
-      "text": "Hi there",
-      "created": "2023-11-29T11:50:45"
-    }
-  ])
+  const [messages, setMessages] = useState<Array<Message>>([])
+  const [conversationData, setConversationData] = useState({})
 
   const fetchChats = async () => {
     await axios.get(`/api/channels/${channelId}/conversations/${conversationId}/messages`)
       .then(({ data } : { data: Array<Message> | null }) => {
-        console.log(data)
         data && setMessages(data)
       })
   }
 
+  const getConversationInfo = () => {
+    axios.get(`/api/channels/${channelId}/conversations/${conversationId}`)
+      .then(({ data } : { data: Object | null }) => {
+        console.log(data)
+        data && setConversationData(data)
+      })
+  }
+
   const scrollToBottom = () => {
-    ref.current.scrollTo(
-    {
+    ref.current.scrollTo({
       top: ref.current.scrollHeight,
       behaviour: 'auto'
     })
   }
 
   useEffect(() => {
+    getConversationInfo()
     fetchChats()
     scrollToBottom()
   }, [])
@@ -65,9 +67,11 @@ function Conversation({}) {
     <WithNavbar>
       <Container>
         <BackButton link={`/channel/${channelId}`} label={'Back to conversations'} />
+        <Heading size="4">{conversationData?.name}</Heading>
+        <Text>{conversationData?.description}</Text>
         <br />
         <br />
-        <ScrollArea type="always" scrollbars="vertical" style={{ height: "70vh" }} ref={ref}>
+        <ScrollArea type="always" scrollbars="vertical" style={{ height: "64vh" }} ref={ref}>
           {messages.map((message, index) => (
             <Message key={index} {...message} />
           ))}
@@ -84,25 +88,15 @@ function Conversation({}) {
                     value={inputValue}
                     onChange={updateInput}
                     placeholder="Enter your message..."
-                    className="w-full p-3 text-white bg-paynesgray outline-none border focus:border-coral shadow-sm rounded-lg"
+                    className="w-full p-3 text-white bg-paynesgray outline-none border focus:border-coral shadow-sm rounded-md"
                   />
               </div>
-            {/*  <TextField.Root className='p-2'>
-                <TextField.Input value={inputValue} onChange={updateInput} placeholder="Enter the message..." />
-                <TextField.Slot>
-                  <button className='bg-coral text-white p-2 rounded-sm drop-shadow-md'>
-
-                    <PaperPlaneIcon width="18" height="18" />
-                  </button>
-                </TextField.Slot>
-          </TextField.Root>*/}
             </div>
           ) : (
             <div className='text-center font-bold p-5 w-100 bg-gunmetal text-white rounded-md drop-shadow-md'>
               <Text>Log in to participate in the conversation!</Text>
             </div>
           )}
-          
         </form>
       </Container>
     </WithNavbar>

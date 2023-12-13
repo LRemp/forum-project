@@ -3,20 +3,18 @@ import { useState } from 'react'
 import { Link, useNavigate } from "react-router-dom";
 import { useSignIn } from 'react-auth-kit'
 import logo from "../assets/logo.png"
+import toast from 'react-hot-toast';
 
 function Login() {
   const signIn = useSignIn()
-  const navigate = useNavigate();
-  const [result, setResult] = useState<String>("")
+  const navigate = useNavigate()
   const [formData, setFormData] = useState({ username: '', password: '' })
  
   const onSubmit = (e: any) => {
     e.preventDefault()
     axios.post('/api/users/login', formData)
       .then((res: any) => {
-        if(res.status = 200) {
-          setResult(JSON.stringify(res))
-          console.log('login')
+        if(res.status == 200) {
           if(signIn(
             {
                 token: res.data.token,
@@ -29,10 +27,16 @@ function Login() {
                 //refreshTokenExpireIn: 24 * 60
             }
           )){
+            toast.success(`Welcome back, ${res.data.username}`)
             navigate("/");
-          }else {
-            console.log('error')
+          } else {
+            toast.error("Something went wrong, try again")
           }
+        }
+      })
+      .catch((error) => {
+        if(error.response.status == 400) {
+          toast.error("Wrong login details")
         }
       })
   }

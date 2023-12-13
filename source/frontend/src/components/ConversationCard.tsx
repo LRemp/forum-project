@@ -16,7 +16,7 @@ function ConversationCard({ id, channelId, name, description }: IConversationCar
   }
     
   return (
-    <div className='drop-shadow-md bg-paynesgray text-white rounded-md p-5 hover:bg-gray-800 transition cursor-pointer' onClick={openConversation}>
+    <div className='drop-shadow-md bg-paynesgray text-white rounded-sm p-5 hover:bg-gray-800 transition cursor-pointer' onClick={openConversation}>
       <Heading size="5">{name}</Heading>
       <Text>{description}</Text>
     </div>
